@@ -1,4 +1,4 @@
-@import url('font.css');
+/* @import url('fonts.css');
 
 body, html {
   margin: 0;
@@ -6,7 +6,7 @@ body, html {
   height: 100%;
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
-  background-color: #000; /* fallback if image fails */
+  background-color: #000; 
 }
 
 .hero-section {
@@ -18,7 +18,7 @@ body, html {
 }
 
 .overlay {
-  position: fixed;
+  position: absolute; 
   top: 50%;
   left: 0;
   width: 911px;
@@ -50,4 +50,4 @@ body, html {
 
 .hero-content .blue {
   color: #229EBF;
-}
+} */

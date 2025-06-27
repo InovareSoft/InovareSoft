@@ -1,11 +1,13 @@
 @import url('fonts.css');
 
-*, *::before, *::after {
-  box-sizing: border-box;
-  font-family: 'Outfit', sans-serif;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
 }
 
-:root{
+:root {
     --primary-color: #229EBF;
     --secondary-color: #1C2D41;
     --active-color: #1D849F;
@@ -15,11 +17,11 @@
     --bg-color: #E9F7FB;
 }
 
-body{
+body {
     margin: 0;
     color: var(--dark-color);
-    /* background-color: var(--bg-color); */
-    background-color: black;
+    background-color: var(--bg-color);
+    /* background-color: black; */
     font-family: var(--font-body);
 }
 
@@ -42,14 +44,14 @@ nav {
     align-items: center;
     left: 0;
     right: 0;
-    max-width: 1200px;
+    max-width: 1300px;
     margin-inline: auto;
     z-index: 5;
     margin-top: 40px;
     padding: 16px 32px;
-    background-color: rgb(222, 243, 249, 0.8);
+    /* background-color: rgb(222, 243, 249, 0.8); */
     /* white nav */
-    /* background-color: rgb(254, 254, 254, 0.8); */
+    background-color: rgb(254, 254, 254, 0.8);
     backdrop-filter: blur(10px);
     --webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 42px rgba(0, 0, 0, 0.1);
@@ -60,8 +62,8 @@ nav .nav-links {
     display: flex;
     align-items: center;
     gap: 40px;
-    font-weight: var(--font-weight-h4);
-    font-size: var(--font-size-h4);
+    font-weight: var(--font-weight-h5);
+    font-size: var(--font-size-h5);
 }
 
 nav .nav-links a:hover {
@@ -83,4 +85,65 @@ nav .nav-links a.active {
 
 .logo .logo-light {
     color: var(--primary-color);
+}
+
+/* hero */
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/Hero-section.png') center center / cover no-repeat;
+    overflow: hidden;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    min-height: 600px;
+    max-height: 800px;
+    /* Remove default padding */
+    padding: 0;
+}
+
+header .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.7;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+}
+
+header .hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white-text);
+    max-width: 900px;
+    width: 100%;
+    margin: 0 6%;
+    padding: 0 32px;
+    text-align: left;
+}
+
+/* For very large screens (e.g., 1600px or more) */
+@media (min-width: 1600px) {
+    header .hero-content {
+        margin: 0 15%;
+    }
+}
+
+header .hero-content h1 {
+    font-size: 64px;
+    font-weight: var(--font-weight-h1-bold);
+    line-height: 1.2;
+    margin: 0;
+    /* Remove text-align if present */
+}
+
+header .hero-content .blue {
+    color: var(--primary-color);
+    
 }
