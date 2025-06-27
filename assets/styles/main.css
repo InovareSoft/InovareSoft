@@ -1,0 +1,86 @@
+@import url('fonts.css');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+:root{
+    --primary-color: #229EBF;
+    --secondary-color: #1C2D41;
+    --active-color: #1D849F;
+    --dark-color: #0A1017;
+    --nav-text-color: #555555;
+    --white-text: #DEF3F9;
+    --bg-color: #E9F7FB;
+}
+
+body{
+    margin: 0;
+    color: var(--dark-color);
+    /* background-color: var(--bg-color); */
+    background-color: black;
+    font-family: var(--font-body);
+}
+
+a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 0 32px;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    height: 90px;
+    justify-content: space-between;
+    align-items: center;
+    left: 0;
+    right: 0;
+    max-width: 1200px;
+    margin-inline: auto;
+    z-index: 5;
+    margin-top: 40px;
+    padding: 16px 32px;
+    background-color: rgb(222, 243, 249, 0.8);
+    /* white nav */
+    /* background-color: rgb(254, 254, 254, 0.8); */
+    backdrop-filter: blur(10px);
+    --webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 42px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+nav .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-weight: var(--font-weight-h4);
+    font-size: var(--font-size-h4);
+}
+
+nav .nav-links a:hover {
+    color: var(--primary-color);
+}
+
+nav .nav-links a.active {
+    color: var(--active-color);
+}
+
+.logo {
+    font-weight: var(--font-weight-h2-bold);
+    font-size: var(--font-size-h2-bold);
+}
+
+.logo .logo-dark {
+    color: var(--secondary-color);
+}
+
+.logo .logo-light {
+    color: var(--primary-color);
+}
