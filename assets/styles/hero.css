@@ -1,0 +1,53 @@
+@import url('font.css');
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  background-color: #000; /* fallback if image fails */
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: url('../images/background.png') center center / cover no-repeat;
+  overflow: hidden;
+  color: #E9F7FB;
+}
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 911px;
+  height: 869px;
+  background-color: rgba(0, 0, 0, 0.85);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: fixed;
+  top: 319px;
+  left: 123px;
+  right: 20px;
+  bottom: 314px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero-content h1 {
+  font-size: 64px;
+  line-height: 1.3;
+  margin: 0;
+  font-weight: 700;
+}
+
+.hero-content .blue {
+  color: #229EBF;
+}

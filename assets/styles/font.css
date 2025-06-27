@@ -1,0 +1,100 @@
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Outfit';
+  src: url('./../fonts/Outfit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('./../fonts/Outfit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Typography Styles */
+
+/* H1 */
+.h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+}
+.h1-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+}
+
+/* H2 */
+.h2 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+}
+.h2-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+/* H3 */
+.h3 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 33px;
+}
+.h3-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 33px;
+}
+
+/* H4 */
+.h4 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+}
+.h4-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+/* H5 */
+.h5 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 23px;
+}
+.h5-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 23px;
+}
+
+/* Body */
+.body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 19px;
+}
+.body-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+}
+
+/* Caption */
+.caption {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.caption-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
