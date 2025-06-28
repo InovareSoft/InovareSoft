@@ -4,40 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/main.css" />
     <title>InovareSoft</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        * {
+            font-family: 'Outfit', sans-serif;
+             background-color: #DEF3F9;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: 128px;
+        }
+
+        h1 .logo-dark {
+            color: #1C2D41;
+        }
+
+        h1 .logo-light {
+            color: #229EBF;
+        }
+
+        p {
+            font-weight: 700;
+            font-size: 50px;
+            text-align: center;
+            color: #1C2D41;
+        }
+        .blue {
+            color: #229EBF;
+        }
+        h2 {
+            font-family: 'Pacifico', sans-serif;
+            font-weight: 500;
+            font-size: 50px;
+            text-align: center;
+            color: #229EBF;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Navbar -->
-        <nav>
-            <!-- <link rel="stylesheet" href="assets/styles/navbar.css" /> -->
-            <div class="logo">
-                <a href="#"><span class="logo-dark">Inovare</span><span class="logo-light">Soft</span></a>
-            </div>
-            <div class="nav-links">
-                <a href="#" class="active">About Us</a>
-                <a href="#">Projects</a>
-                <a href="#">Services</a>
-                <a href="#">Teams</a>
-                <a href="#">Contact Us</a>
-            </div>
-        </nav>
-        <!-- End of Navbar -->
-
-        <!-- Hero Section -->
-        <header>
-            <div class="overlay"></div>
-            <div class="hero-content">
-                <h1>
-                    <span class="blue">Renew</span> Your Digital World with <span class="blue">Smart</span>, <span class="blue">Custom</span> Software
-                </h1>
-            </div>
-        </header>
-    </div>
-
-
+    <h1><span class="logo-dark">Inovare</span><span class="logo-light">Soft</span></h1>
+    <p><span class="blue">Renew</span> Your Digital World <br>with <span class="blue">Smart</span>, <span
+            class="blue">Custom</span> Software</p>
+    <h2>Coming Soon</h2>
 </body>
 
 </html>
