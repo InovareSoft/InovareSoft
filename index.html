@@ -2,63 +2,106 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InovareSoft</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-        * {
-            font-family: 'Outfit', sans-serif;
-             background-color: #DEF3F9;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>InovareSoft</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
 
-        h1 {
-            font-weight: 700;
-            font-size: 128px;
-        }
+    body {
+      background-color: #DEF3F9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 16px;
+      text-align: center;
+    }
 
-        h1 .logo-dark {
-            color: #1C2D41;
-        }
+    h1 {
+      font-weight: 700;
+      font-size: 64px; /* smaller base for tiny phones */
+      margin-bottom: 24px;
+      line-height: 1.2;
+      word-wrap: break-word;
+    }
 
-        h1 .logo-light {
-            color: #229EBF;
-        }
+    h1 .logo-dark {
+      color: #1C2D41;
+    }
 
-        p {
-            font-weight: 700;
-            font-size: 50px;
-            text-align: center;
-            color: #1C2D41;
-        }
-        .blue {
-            color: #229EBF;
-        }
-        h2 {
-            font-family: 'Pacifico', sans-serif;
-            font-weight: 500;
-            font-size: 50px;
-            text-align: center;
-            color: #229EBF;
-        }
-    </style>
+    h1 .logo-light {
+      color: #229EBF;
+    }
+
+    .des {
+      font-weight: 700;
+      font-size: 30px;
+      color: #1C2D41;
+      margin: 16px 0 24px;
+      line-height: 1.5;
+    }
+
+    .blue {
+      color: #229EBF;
+    }
+
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-weight: 500;
+      font-size: 25px;
+      color: #229EBF;
+      margin-top: 50px;
+    }
+
+    /* Tablet (600px and up) */
+    @media (min-width: 600px) {
+      h1 {
+        font-size: 115px;
+      }
+
+      .des {
+        font-size: 50px;
+      }
+
+      h2 {
+        font-size: 35px;
+      }
+    }
+
+    /* Desktop (992px and up) */
+    @media (min-width: 992px) {
+      h1 {
+        font-size: 128px;
+      }
+
+      .des {
+        font-size: 55px;
+      }
+
+      h2 {
+        font-size: 45px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <h1><span class="logo-dark">Inovare</span><span class="logo-light">Soft</span></h1>
-    <p><span class="blue">Renew</span> Your Digital World <br>with <span class="blue">Smart</span>, <span
-            class="blue">Custom</span> Software</p>
-    <h2>Coming Soon</h2>
+  <h1><span class="logo-dark">Inovare</span><span class="logo-light">Soft</span></h1>
+  <div class="des">
+    <span class="blue">Renew</span> Your Digital World <br />
+    with <span class="blue">Smart</span>, <span class="blue">Custom</span> Software
+  </div>
+  <h2>Coming Soon</h2>
 </body>
 
 </html>
