@@ -4,6 +4,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    margin: 0;
     font-family: 'Outfit', sans-serif;
 }
 
@@ -18,11 +19,8 @@
 }
 
 body {
-    margin: 0;
     color: var(--dark-color);
     background-color: var(--bg-color);
-    /* background-color: black; */
-    font-family: var(--font-body);
 }
 
 a {
@@ -32,7 +30,7 @@ a {
 
 .container {
     max-width: 1200px;
-    margin-inline: auto;
+    margin: 0 auto;
     padding: 0 32px;
 }
 
@@ -56,6 +54,7 @@ nav {
     --webkit-backdrop-filter: blur(10px);
     box-shadow: 0 8px 42px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    user-select: none;
 }
 
 nav .nav-links {
@@ -87,63 +86,92 @@ nav .nav-links a.active {
     color: var(--primary-color);
 }
 
-/* hero */
-header {
+/* Full-bleed Hero */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr min(1200px, 100%) 1fr;
     position: relative;
-    display: flex;
-    align-items: center;
+    padding: 150px 0;
+    background: url('../images/Hero-section.png') center/cover no-repeat;
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background: url('../images/Hero-section.png') center center / cover no-repeat;
-    overflow: hidden;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
     min-height: 600px;
     max-height: 800px;
-    /* Remove default padding */
     padding: 0;
 }
 
-header .overlay {
+.hero::before {
+    content: "";
+    grid-column: 1 / -1;
     position: absolute;
+    inset: 0;
+    width: 60%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
     top: 0;
     left: 0;
-    background-color: #000;
-    opacity: 0.7;
-    width: 60%;
     height: 100%;
-    z-index: 1;
 }
 
-header .hero-content {
+.hero-inner {
+    grid-column: 1 / -1;
     position: relative;
     z-index: 2;
     color: var(--white-text);
     max-width: 900px;
     width: 100%;
+
     margin: 0 6%;
-    padding: 0 32px;
+    padding: 17% 32px;
     text-align: left;
 }
 
-/* For very large screens (e.g., 1600px or more) */
-@media (min-width: 1600px) {
-    header .hero-content {
-        margin: 0 15%;
-    }
-}
-
-header .hero-content h1 {
+.hero-inner h1 {
     font-size: 64px;
     font-weight: var(--font-weight-h1-bold);
     line-height: 1.2;
     margin: 0;
-    /* Remove text-align if present */
 }
 
-header .hero-content .blue {
+.blue {
     color: var(--primary-color);
-    
+}
+
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 80px 0;
+  gap: 40px;
+}
+
+.about-left,
+.about-right {
+  flex: 1 1 400px;
+  min-width: 0; 
+}
+
+.about-left img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.about-right {
+  max-width: 600px;
+}
+
+.about-right h2 {
+  font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-h1-bold);
+color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.about-right p {
+  font-size: var(--font-size-h5);
+font-weight: var(--font-weight-h5);
+color: var(--dark-color);
+  line-height: 1.3;
 }
