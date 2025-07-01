@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inovare Soft</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InovareSoft Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="global.css" />
+    <style id="sections-styles">
+      /* CSS for section section:hero */
+      .hero-section {
+        min-height: 870px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 0;
+        padding-bottom: 0;
+        color: var(--text-light);
+        overflow: hidden;
+      }
+      .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      .hero-bg-img,
+      .hero-bg-svg {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .main-header {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+      }
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 20px 30px;
+        max-width: 1200px;
+      }
+      .logo {
+        font-size: 40px;
+        font-weight: 700;
+      }
+      .logo-part1 {
+        color: var(--secondary-color);
+      }
+      .logo-part2 {
+        color: var(--primary-color);
+      }
+      .main-nav {
+        display: flex;
+        gap: 40px;
+      }
+      .main-nav a {
+        font-size: 28px;
+        color: var(--text-muted);
+        transition: color 0.3s;
+      }
+      .main-nav a:hover,
+      .main-nav a:first-child {
+        color: var(--primary-color);
+      }
+      .hero-content {
+        padding-top: 150px;
+      }
+      .hero-content h1 {
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 1.2;
+        max-width: 770px;
+      }
+      .hero-content .highlight {
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 1024px) {
+        .main-nav {
+          display: none; /* Simple hide for mobile, would need a burger menu for full functionality */
+        }
+        .header-container {
+          justify-content: center;
+        }
+        .hero-content h1 {
+          font-size: 48px;
+          text-align: center;
+        }
+        .hero-section {
+          min-height: 600px;
+          align-items: center;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 36px;
+        }
+        .main-header {
+          top: 20px;
+        }
+      }
+
+      /* CSS for section section:about */
+      .about-section {
+        background-color: var(--bg-white);
+      }
+      .about-container {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+      }
+      .about-images {
+        flex: 1;
+        position: relative;
+        height: 436px;
+      }
+      .about-images img {
+        position: absolute;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+      .about-img-1 {
+        width: 321px;
+        height: 333px;
+        top: 0;
+        left: 0;
+      }
+      .about-img-2 {
+        width: 321px;
+        height: 292px;
+        top: 0;
+        right: 0;
+      }
+      .about-img-3 {
+        width: 321px;
+        height: 132px;
+        bottom: 0;
+        right: 0;
+      }
+      .about-text {
+        flex: 1;
+        max-width: 511px;
+      }
+      .about-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+      }
+      .about-text h2 {
+        color: var(--primary-color);
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 24px;
+      }
+      .about-text p {
+        font-size: 23px;
+        line-height: 1.4;
+        color: #0a1017;
+      }
+
+      @media (max-width: 1024px) {
+        .about-container {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .about-images {
+          width: 100%;
+          max-width: 654px;
+        }
+        .about-text {
+          text-align: center;
+          max-width: 100%;
+        }
+        .about-icon {
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      @media (max-width: 768px) {
+        .about-images {
+          height: auto;
+          position: static;
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+        }
+        .about-images img {
+          position: static;
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      /* CSS for section section:projects */
+      .projects-section {
+        background-color: var(--bg-light);
+      }
+      .projects-title {
+        color: var(--primary-dark);
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 60px;
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+      }
+      .project-card {
+        position: relative;
+        border-radius: 8.5px;
+        overflow: hidden;
+        color: var(--bg-white);
+        background-color: var(--bg-dark);
+      }
+      .project-card.style-light {
+        color: var(--text-dark);
+        background-color: var(--bg-white);
+      }
+      .project-img {
+        width: 100%;
+        height: 345px;
+        object-fit: cover;
+      }
+      .project-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 110px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0) 0%,
+          var(--bg-white) 100%
+        );
+      }
+      .project-card.style-light .project-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(63, 63, 63, 0) 0%,
+          var(--bg-dark) 100%
+        );
+      }
+      .project-card:not(.style-light) .project-overlay {
+        background: linear-gradient(
+          180deg,
+          rgba(63, 63, 63, 0) 0%,
+          var(--bg-dark) 100%
+        );
+      }
+      .project-tags {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        gap: 10px;
+      }
+      .tag {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: var(--text-dark);
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .project-card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 24px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        z-index: 2;
+      }
+      .project-card-content p {
+        font-size: 24px;
+        line-height: 1.2;
+        max-width: 265px;
+      }
+      .project-arrow {
+        width: 46px;
+        height: 46px;
+      }
+
+      /* CSS for section section:services */
+      .services-section {
+        background-color: var(--bg-dark);
+        padding: 0;
+      }
+      .services-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 414px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+      .services-bg-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        opacity: 0.3;
+      }
+      .services-bg-elements img {
+        position: absolute;
+      }
+      .bg-el-1 {
+        top: -10%;
+        right: -20%;
+        width: 60%;
+      }
+      .bg-el-2 {
+        top: 0;
+        left: 15%;
+        height: 100%;
+        width: auto;
+      }
+      .bg-el-3 {
+        bottom: 10%;
+        left: 30%;
+        width: 8%;
+      }
+      .bg-el-4 {
+        top: 20%;
+        left: 40%;
+        width: 20%;
+      }
+      .services-content,
+      .services-list {
+        position: relative;
+        z-index: 1;
+      }
+      .services-content {
+        flex-basis: 50%;
+      }
+      .services-content h2 {
+        color: #d7d7d7;
+        font-size: 56px;
+        font-weight: 600;
+        line-height: 1.1;
+        max-width: 300px;
+      }
+      .services-list {
+        flex-basis: 40%;
+      }
+      .services-list ul {
+        list-style: none;
+      }
+      .services-list li {
+        border-bottom: 1px solid #636060;
+        padding: 25px 0;
+      }
+      .services-list li:last-child {
+        border-bottom: none;
+      }
+      .services-list a {
+        font-size: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #6d6d6d;
+        transition: color 0.3s;
+      }
+      .services-list li:first-child a {
+        color: var(--bg-white);
+      }
+      .services-list a:hover {
+        color: var(--bg-white);
+      }
+      .services-list a img {
+        width: 44px;
+        height: 44px;
+      }
+
+      @media (max-width: 1024px) {
+        .services-container {
+          flex-direction: column;
+          text-align: center;
+          padding: 40px 20px;
+          gap: 40px;
+        }
+        .services-content h2 {
+          max-width: 100%;
+        }
+        .services-list {
+          width: 100%;
+        }
+      }
+
+      /* CSS for section section:team */
+      .team-section {
+        background-color: var(--bg-light);
+      }
+      .team-title {
+        color: var(--primary-color);
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 60px;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        justify-content: center;
+      }
+      .team-card {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        color: var(--bg-white);
+        padding-bottom: 120px; /* Space for the info box */
+      }
+      .team-card-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-dark);
+        border-radius: 8px;
+      }
+      .team-photo {
+        width: 100%;
+        height: auto;
+        position: relative;
+        z-index: 1;
+      }
+      .team-card-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 2;
+      }
+      .info-divider {
+        height: 1px;
+        background-color: #efebeb;
+        margin-bottom: 20px;
+      }
+      .team-card-info h3 {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .team-card-info p {
+        font-size: 19px;
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+      .social-icons {
+        display: flex;
+        gap: 12px;
+      }
+      .social-icons a {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* CSS for section section:contact */
+      .contact-section {
+        background-color: var(--bg-white);
+        overflow: hidden;
+      }
+      .contact-container {
+        position: relative;
+      }
+      .contact-bg-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-30%, -50%);
+        z-index: 0;
+        font-size: 128px;
+        font-weight: 400;
+        line-height: 1.2;
+        -webkit-text-stroke: 2.8px #152231;
+        color: transparent;
+        opacity: 0.21;
+        white-space: nowrap;
+      }
+      .bg-text-line2 {
+        display: block;
+        margin-left: 150px;
+      }
+      .contact-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+      }
+      .contact-form-area {
+        flex-basis: 60%;
+      }
+      .contact-info-area {
+        flex-basis: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 40px;
+        padding-bottom: 80px;
+      }
+      .contact-title {
+        color: var(--primary-color);
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .contact-subtitle {
+        font-size: 23px;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+      }
+      .contact-buttons {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 60px;
+      }
+      .btn {
+        padding: 16px 32px;
+        border-radius: 20px;
+        font-size: 19px;
+        cursor: pointer;
+        border: 1px solid transparent;
+      }
+      .btn-primary {
+        background-color: #1d849f;
+        color: var(--bg-white);
+      }
+      .btn-secondary {
+        background-color: transparent;
+        border-color: #1d849f;
+        color: var(--text-dark);
+      }
+      .btn-connect {
+        box-shadow: 0px 4px 4px 0px #176a7f;
+        padding: 16px 40px;
+      }
+      .contact-form .form-group {
+        margin-bottom: 60px;
+      }
+      .contact-form input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid var(--text-muted);
+        padding: 10px 0;
+        font-size: 19px;
+        background-color: transparent;
+      }
+      .contact-form input::placeholder {
+        color: var(--text-muted);
+      }
+      .contact-form input:focus {
+        outline: none;
+        border-bottom-color: var(--primary-color);
+      }
+      .info-label {
+        font-size: 23px;
+        color: var(--text-muted);
+        margin-bottom: 8px;
+      }
+      .info-value {
+        font-size: 23px;
+        color: #1c1c1c;
+      }
+
+      @media (max-width: 1024px) {
+        .contact-content {
+          flex-direction: column;
+        }
+        .contact-bg-text {
+          font-size: 80px;
+          transform: translate(-50%, -50%);
+          text-align: center;
+        }
+        .bg-text-line2 {
+          margin-left: 0;
+        }
+        .contact-info-area {
+          flex-direction: row;
+          justify-content: space-around;
+          padding-bottom: 0;
+        }
+      }
+      @media (max-width: 768px) {
+        .contact-bg-text {
+          display: none;
+        }
+        .contact-buttons {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* CSS for section section:footer */
+      .site-footer {
+        background-color: #229ebf;
+        color: var(--text-light);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .footer-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      .footer-bg img {
+        position: absolute;
+        filter: blur(130px);
+        opacity: 0.7;
+      }
+      .footer-blur-1 {
+        top: 0;
+        left: 10%;
+        width: 40%;
+      }
+      .footer-blur-2 {
+        bottom: -20%;
+        right: 10%;
+        width: 40%;
+      }
+      .footer-container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+      }
+      .footer-about {
+        max-width: 490px;
+      }
+      .footer-logo {
+        margin-bottom: 24px;
+        display: inline-block;
+      }
+      .logo-part2-light {
+        color: var(--text-light);
+      }
+      .footer-about p {
+        font-size: 28px;
+        line-height: 1.4;
+      }
+      .footer-links {
+        text-align: right;
+      }
+      .footer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 40px;
+      }
+      .footer-nav a {
+        font-size: 23px;
+        transition: opacity 0.3s;
+      }
+      .footer-nav a:hover {
+        opacity: 0.8;
+      }
+      .footer-social {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+      }
+      .footer-social a {
+        width: 35px;
+        height: 35px;
+      }
+
+      @media (max-width: 768px) {
+        .footer-container {
+          flex-direction: column;
+          text-align: center;
+        }
+        .footer-links {
+          text-align: center;
+        }
+        .footer-nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .footer-social {
+          justify-content: center;
+        }
+      }
+    </style>
+    <script src="global.js" defer></script>
+  </head>
+  <body>
+    <section id="hero" class="hero-section">
+      <div class="hero-background">
+        <!--merged image-->
+        <img
+          src="images/16015b1ff37c1a5c68fd8b5041aab99db3d77045.png"
+          alt="Abstract background"
+          class="hero-bg-img"
+        />
+        <img
+          src="images/4_3131.svg"
+          alt="Abstract background overlay"
+          class="hero-bg-svg"
+        />
+      </div>
+      <header class="main-header">
+        <div class="container header-container">
+          <a href="#" class="logo">
+            <span class="logo-part1">Inovare</span
+            ><span class="logo-part2">Soft</span>
+          </a>
+          <nav class="main-nav">
+            <a href="#about">About</a>
+            <a href="#projects">Project</a>
+            <a href="#services">Service</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </div>
+      </header>
+      <div class="container hero-content">
+        <h1>
+          <span class="highlight">Renew</span> Your Digital World <br />with
+          <span class="highlight">Smart</span>,
+          <span class="highlight">Custom</span> Software
+        </h1>
+      </div>
+    </section>
+    <section id="about" class="about-section">
+      <div class="container about-container">
+        <!--merged image-->
+        <div class="about-images">
+          <img
+            src="images/4ff6844d4f86ff4a77123ece7ddd1fe82c2c13f8.png"
+            alt="Team working in an office"
+            class="about-img-1"
+          />
+          <img
+            src="images/4ff6844d4f86ff4a77123ece7ddd1fe82c2c13f8.png"
+            alt="Team brainstorming with sticky notes"
+            class="about-img-2"
+          />
+          <img
+            src="images/4ff6844d4f86ff4a77123ece7ddd1fe82c2c13f8.png"
+            alt="Close up of team working"
+            class="about-img-3"
+          />
+        </div>
+        <div class="about-text">
+          <img src="images/44_9.svg" alt="Code icon" class="about-icon" />
+          <h2>About US</h2>
+          <p>
+            We’re a forward-thinking group of developers and tech lovers who
+            love crafting custom software. Whether you're a fintech startup, a
+            healthcare provider, an educational platform, a government
+            organization, or an up‑and‑coming tech business, we build solutions
+            that fit your needs.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="projects" class="projects-section">
+      <div class="container">
+        <h2 class="projects-title">Project</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              src="images/aacf71be59523807817acd0e3ffaf5052ba76cda.png"
+              alt="VR training app"
+              class="project-img"
+            />
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="tag">3D</span>
+              <span class="tag">AR/VR/MR</span>
+              <span class="tag">2D</span>
+            </div>
+            <div class="project-card-content">
+              <p>VR training app for a manufacturing company</p>
+              <a href="#" class="project-arrow">
+                <img src="images/12_92.svg" alt="Arrow icon" />
+              </a>
+            </div>
+          </div>
+          <div class="project-card style-light">
+            <img
+              src="images/92a1a2490394e7b53f023c48b078be53d7963967.png"
+              alt="Team collaborating on a project"
+              class="project-img"
+            />
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="tag">3D</span>
+              <span class="tag">AR/VR/MR</span>
+              <span class="tag">2D</span>
+            </div>
+            <div class="project-card-content">
+              <p>VR training app for a manufacturing company</p>
+              <a href="#" class="project-arrow">
+                <img src="images/12_117.svg" alt="Arrow icon" />
+              </a>
+            </div>
+          </div>
+          <div class="project-card style-light">
+            <img
+              src="images/3f3c458a9625d5d640cf1d27b46506cd97704fdc.png"
+              alt="Developer working on a laptop"
+              class="project-img"
+            />
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="tag">3D</span>
+              <span class="tag">AR/VR/MR</span>
+              <span class="tag">2D</span>
+            </div>
+            <div class="project-card-content">
+              <p>VR training app for a manufacturing company</p>
+              <a href="#" class="project-arrow">
+                <img src="images/12_135.svg" alt="Arrow icon" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="services-section">
+      <div class="container services-container">
+        <!--merged image-->
+        <div class="services-bg-elements">
+          <img
+            src="images/12_2168.svg"
+            alt="background element"
+            class="bg-el-1"
+          />
+          <img
+            src="images/4c284f94800b8af3bdc8526261cf084fb3425b2e.png"
+            alt="background element"
+            class="bg-el-2"
+          />
+          <img
+            src="images/12_4169.svg"
+            alt="background element"
+            class="bg-el-3"
+          />
+          <img
+            src="images/12_4171.svg"
+            alt="background element"
+            class="bg-el-4"
+          />
+        </div>
+        <div class="services-content">
+          <h2>See what we can do for you</h2>
+        </div>
+        <div class="services-list">
+          <ul>
+            <li>
+              <a href="#"
+                >Web Site <img src="images/12_4162.svg" alt="icon"
+              /></a>
+            </li>
+            <li><a href="#">Mobile App</a></li>
+            <li><a href="#">Desktop App</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section id="team" class="team-section">
+      <div class="container">
+        <h2 class="team-title">Our Team</h2>
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-card-bg"></div>
+            <img
+              src="images/0bcc0b8d1f60aecb3870133d70a3c3ee87ccb41c.png"
+              alt="Omar Abduh"
+              class="team-photo"
+            />
+            <div class="team-card-info">
+              <div class="info-divider"></div>
+              <h3>Omar Abduh</h3>
+              <p>Developer & Security</p>
+              <div class="social-icons">
+                <a href="#"
+                  ><img src="images/12_4234.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4228.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4224.svg" alt="Social Icon"
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-bg"></div>
+            <img
+              src="images/8ca7a1a0b5a6aa466035b43388e153e1039d6682.png"
+              alt="Yassin Shaher"
+              class="team-photo"
+            />
+            <div class="team-card-info">
+              <div class="info-divider"></div>
+              <h3>Yassin Shaher</h3>
+              <p>Developer & Security</p>
+              <div class="social-icons">
+                <a href="#"
+                  ><img src="images/12_4260.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4254.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4250.svg" alt="Social Icon"
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-bg"></div>
+            <img
+              src="images/f00f99e1713c447045c8ceea98d6b15d79d406aa.png"
+              alt="Mohamed Hany"
+              class="team-photo"
+            />
+            <div class="team-card-info">
+              <div class="info-divider"></div>
+              <h3>Mohamed Hany</h3>
+              <p>Developer & Security</p>
+              <div class="social-icons">
+                <a href="#"
+                  ><img src="images/12_4289.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4283.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4279.svg" alt="Social Icon"
+                /></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-bg"></div>
+            <img
+              src="images/8ca7a1a0b5a6aa466035b43388e153e1039d6682.png"
+              alt="Ziad Raafat"
+              class="team-photo"
+            />
+            <div class="team-card-info">
+              <div class="info-divider"></div>
+              <h3>Ziad Raafat</h3>
+              <p>Developer & Security</p>
+              <div class="social-icons">
+                <a href="#"
+                  ><img src="images/12_4627.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4621.svg" alt="Social Icon"
+                /></a>
+                <a href="#"
+                  ><img src="images/12_4617.svg" alt="Social Icon"
+                /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="contact-section">
+      <div class="container contact-container">
+        <div class="contact-bg-text">
+          <span class="bg-text-line1">Have a</span>
+          <span class="bg-text-line2">project?</span>
+        </div>
+        <div class="contact-content">
+          <div class="contact-form-area">
+            <h2 class="contact-title">Contact us!</h2>
+            <p class="contact-subtitle">What can we do for you?</p>
+            <div class="contact-buttons">
+              <button type="button" class="btn btn-primary">
+                Website Development
+              </button>
+              <button type="button" class="btn btn-secondary">
+                Mobile Apps developmet
+              </button>
+            </div>
+            <form class="contact-form">
+              <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Name" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="details"
+                  name="details"
+                  placeholder="Project details"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-connect">
+                Let’s Connect
+              </button>
+            </form>
+          </div>
+          <div class="contact-info-area">
+            <div class="contact-info-item">
+              <p class="info-label">Phone</p>
+              <p class="info-value">+20155 240 8726</p>
+            </div>
+            <div class="contact-info-item">
+              <p class="info-label">Email</p>
+              <p class="info-value">inovaresoft@outlook.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer id="footer" class="site-footer">
+      <!--merged image-->
+      <div class="footer-bg">
+        <img src="images/12_4408.svg" alt="blur-effect" class="footer-blur-1" />
+        <img src="images/12_4407.svg" alt="blur-effect" class="footer-blur-2" />
+      </div>
+      <div class="container footer-container">
+        <div class="footer-about">
+          <a href="#" class="logo footer-logo">
+            <span class="logo-part1">Inovare</span
+            ><span class="logo-part2-light">Soft</span>
+          </a>
+          <p>
+            InovareSoft is committed to delivering cutting-edge digital
+            solutions with a human-centered design approach. Our interfaces are
+            clean, our code is smart, and our performance is sharp.
+          </p>
+        </div>
+        <div class="footer-links">
+          <nav class="footer-nav">
+            <a href="#about">About</a>
+            <a href="#projects">Project</a>
+            <a href="#services">Service</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <div class="footer-social">
+            <a href="#"><img src="images/12_4432.svg" alt="Social Icon" /></a>
+            <a href="#"><img src="images/12_4426.svg" alt="Social Icon" /></a>
+            <a href="#"><img src="images/12_4422.svg" alt="Social Icon" /></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
