@@ -11,10 +11,12 @@
   overflow: hidden;
   position: relative;
   /* Fallback background in case images don't load */
-  background: linear-gradient(135deg, 
-    rgba(38, 176, 212, 0.8) 0%, 
-    rgba(54, 125, 175, 0.9) 50%, 
-    rgba(38, 176, 212, 0.8) 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(38, 176, 212, 0.8) 0%,
+    rgba(54, 125, 175, 0.9) 50%,
+    rgba(38, 176, 212, 0.8) 100%
+  );
 }
 
 .hero-background {
@@ -50,7 +52,6 @@
   animation-delay: -3s;
   mix-blend-mode: multiply;
 }
-
 
 .hero-content {
   text-align: center;
@@ -91,44 +92,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 3s ease-in-out infinite;
   background-size: 200% 100%;
+  /* Split text system will handle the glow and animations */
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-/* Glowing effect for highlight text */
-.hero-content .highlight::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--primary-color);
-  opacity: 0.3;
-  filter: blur(20px);
-  z-index: -1;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from {
-    opacity: 0.2;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 0.4;
-    transform: scale(1.05);
-  }
-}
+/* Old shimmer keyframe removed - now handled by splitText.css */
 
 /* Floating particles effect */
 .hero-section::before {
@@ -194,23 +162,28 @@
     top: 10px;
     width: calc(100% - 20px);
   }
-  
+
   .header-container {
     padding: 12px 20px;
     border-radius: 16px;
   }
-  
+
   .logo {
     font-size: 28px;
   }
-  
+
   .main-nav {
     gap: 20px;
   }
-  
+
   .main-nav a {
     font-size: 18px;
     padding: 8px 12px;
+  }
+
+  .split-text .char,
+  .split-word .word {
+    transition-duration: 0.4s;
   }
 }
 
@@ -219,21 +192,21 @@
     top: 5px;
     width: calc(100% - 10px);
   }
-  
+
   .header-container {
     padding: 10px 15px;
     flex-direction: column;
     gap: 15px;
   }
-  
+
   .logo {
     font-size: 24px;
   }
-  
+
   .main-nav {
     gap: 15px;
   }
-  
+
   .main-nav a {
     font-size: 16px;
     padding: 6px 10px;
@@ -258,6 +231,11 @@ section {
   will-change: transform;
 }
 
+.split-text .char,
+.split-word .word {
+  will-change: transform, opacity;
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .hero-bg-img,
@@ -275,3 +253,5 @@ section {
 }
 
 /* Navbar scroll effect - removed white reveal */
+
+/* All split text animations now handled by splitText.css */

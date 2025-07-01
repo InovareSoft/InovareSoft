@@ -1,0 +1,321 @@
+/**
+ * Enhanced Split Text Animation System
+ * Modern character and word-based text animations inspired by ReactBits
+ */
+
+/* ===== SPLIT TEXT BASE STYLES ===== */
+
+.split-text {
+  overflow: visible; /* Changed from hidden to prevent glow cropping */
+  position: relative;
+  /* Add padding to accommodate glow effects */
+  padding: 4px;
+  margin: -4px; /* Negative margin to maintain layout */
+}
+
+.split-text .char {
+  display: inline-block;
+  transform-origin: center bottom;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, opacity, filter, text-shadow;
+  /* Prevent text selection issues */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.split-word {
+  overflow: visible; /* Consistent with split-text */
+  padding: 2px;
+  margin: -2px;
+}
+
+.split-word .word {
+  display: inline-block;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform, opacity;
+}
+
+/* ===== ANIMATION VARIANTS ===== */
+
+/* Fade Up Animation */
+.char-fade-up {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+/* Slide Up with Rotation */
+.char-slide-up {
+  opacity: 0;
+  transform: translateY(100px) rotateX(90deg);
+}
+
+/* Scale Up Animation */
+.char-scale-up {
+  opacity: 0;
+  transform: scale(0.8) translateY(20px);
+}
+
+/* Blur In Animation */
+.char-blur-in {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(30px);
+}
+
+/* Rotate In Animation */
+.char-rotate-in {
+  opacity: 0;
+  transform: rotateY(90deg) translateX(20px);
+}
+
+/* Elastic Animation */
+.char-elastic {
+  opacity: 0;
+  transform: scaleY(0) translateY(50px);
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Glitch Effect */
+.char-glitch {
+  opacity: 0;
+  transform: translateX(20px) skewX(10deg);
+  filter: hue-rotate(90deg);
+}
+
+/* Wave Effect */
+.char-wave {
+  opacity: 0;
+  transform: translateY(50px) rotate(5deg);
+}
+
+/* Bounce Effect */
+.char-bounce {
+  opacity: 0;
+  transform: translateY(100px) scale(0.8);
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ===== TIMING AND STAGGER ===== */
+
+.split-text .char {
+  transition-delay: calc(var(--char-index, 0) * 0.015s); /* Much faster: 15ms stagger */
+  transition-duration: 0.4s; /* Faster transitions */
+}
+
+.split-word .word {
+  transition-delay: calc(var(--word-index, 0) * 0.06s); /* Faster for words too */
+  transition-duration: 0.5s;
+}
+
+/* ===== HIGHLIGHT EFFECTS ===== */
+
+.split-text .char.highlight {
+  color: var(--primary-color);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  /* Balanced glow effect that syncs with interactions */
+  text-shadow: 
+    0 0 8px rgba(38, 176, 212, 0.5),
+    0 0 16px rgba(38, 176, 212, 0.3),
+    0 0 24px rgba(38, 176, 212, 0.2);
+  filter: drop-shadow(0 0 6px rgba(38, 176, 212, 0.3));
+  /* Gentle pulsing that works with hover */
+  animation: balancedGlow 3s ease-in-out infinite;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes balancedGlow {
+  0%, 100% { 
+    text-shadow: 
+      0 0 8px rgba(38, 176, 212, 0.5),
+      0 0 16px rgba(38, 176, 212, 0.3),
+      0 0 24px rgba(38, 176, 212, 0.2);
+    filter: drop-shadow(0 0 6px rgba(38, 176, 212, 0.3));
+  }
+  50% { 
+    text-shadow: 
+      0 0 12px rgba(38, 176, 212, 0.7),
+      0 0 20px rgba(38, 176, 212, 0.4),
+      0 0 28px rgba(38, 176, 212, 0.3);
+    filter: drop-shadow(0 0 8px rgba(38, 176, 212, 0.4));
+  }
+}
+
+/* Enhanced hover effect for highlight characters */
+.split-text .char.highlight:hover {
+  transform: scale(1.1) translateY(-3px);
+  text-shadow: 
+    0 0 15px rgba(38, 176, 212, 0.8),
+    0 0 25px rgba(38, 176, 212, 0.6),
+    0 0 35px rgba(38, 176, 212, 0.4);
+  filter: drop-shadow(0 0 12px rgba(38, 176, 212, 0.5));
+  /* Keep the glow animation running during hover */
+}
+
+/* ===== HOVER INTERACTIONS ===== */
+
+.split-text:hover .char {
+  animation: charBounce 0.6s ease-in-out;
+  animation-delay: calc(var(--char-index, 0) * 0.02s);
+}
+
+/* Keep highlight glow running during text hover */
+.split-text:hover .char.highlight {
+  /* Glow animation continues running */
+}
+
+@keyframes charBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Interactive hover for individual non-highlight characters */
+.split-text .char:not(.highlight):hover {
+  transform: scale(1.15) translateY(-4px);
+  color: var(--accent-color);
+  text-shadow: 0 4px 12px rgba(38, 176, 212, 0.3);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ===== SPECIAL EFFECTS ===== */
+
+/* Typewriter Effect */
+.typewriter .char {
+  opacity: 0;
+  animation: typewriterChar 0.05s forwards;
+  animation-delay: calc(var(--char-index, 0) * 0.05s);
+}
+
+@keyframes typewriterChar {
+  to { opacity: 1; }
+}
+
+/* Neon Glow Effect */
+.neon-text .char {
+  color: var(--primary-color);
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor;
+  animation: neonFlicker 2s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Matrix Rain Effect */
+.matrix-text .char {
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  opacity: 0;
+  animation: matrixRain 0.1s forwards;
+  animation-delay: calc(var(--char-index, 0) * 0.1s);
+}
+
+@keyframes matrixRain {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-20px); 
+    color: #fff;
+  }
+  50% { 
+    opacity: 1; 
+    color: #0f0; 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+    color: #0f0;
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .split-text .char,
+  .split-word .word {
+    transition: none !important;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .split-text .char,
+  .split-word .word {
+    transition-duration: 0.3s; /* Even faster on mobile */
+  }
+  
+  .split-text .char {
+    transition-delay: calc(var(--char-index, 0) * 0.01s); /* Super fast on mobile */
+  }
+  
+  /* Reduce glow intensity on mobile for better performance */
+  .split-text .char.highlight {
+    text-shadow: 
+      0 0 6px rgba(38, 176, 212, 0.4),
+      0 0 12px rgba(38, 176, 212, 0.2);
+    filter: drop-shadow(0 0 4px rgba(38, 176, 212, 0.2));
+  }
+  
+  .split-text .char.highlight:hover {
+    text-shadow: 
+      0 0 8px rgba(38, 176, 212, 0.6),
+      0 0 16px rgba(38, 176, 212, 0.3);
+    filter: drop-shadow(0 0 6px rgba(38, 176, 212, 0.3));
+  }
+}
+
+/* Performance optimization for older devices */
+@media (max-width: 480px) {
+  .char-blur-in,
+  .char-glitch {
+    filter: none;
+  }
+  
+  /* Removed problematic highlight::after rule since we removed the glow effect */
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Animation speed modifiers */
+.split-text.fast .char {
+  transition-duration: 0.4s;
+  transition-delay: calc(var(--char-index, 0) * 0.02s);
+}
+
+.split-text.slow .char {
+  transition-duration: 1.2s;
+  transition-delay: calc(var(--char-index, 0) * 0.05s);
+}
+
+/* Animation direction modifiers */
+.split-text.reverse .char {
+  transition-delay: calc((var(--total-chars, 20) - var(--char-index, 0)) * 0.03s);
+}
+
+/* No animation class */
+.split-text.no-animation .char,
+.split-word.no-animation .word {
+  transition: none;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Pause animation */
+.split-text.paused .char,
+.split-word.paused .word {
+  animation-play-state: paused;
+}
