@@ -1,0 +1,550 @@
+/* Modern Animation Utilities */
+
+/* CSS Variables for consistent animation timing */
+:root {
+  --animation-fast: 0.2s;
+  --animation-normal: 0.3s;
+  --animation-slow: 0.5s;
+  --animation-slower: 0.8s;
+
+  --easing-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --easing-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 0 1px rgba(38, 176, 212, 0.1),
+    0 4px 16px rgba(38, 176, 212, 0.15);
+}
+
+/* Scroll Reveal Base Styles */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all var(--animation-slow) var(--easing-smooth);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reveal Animation Variants */
+[data-reveal="fade"] {
+  transform: none;
+}
+
+[data-reveal="slide-up"] {
+  transform: translateY(40px);
+}
+
+[data-reveal="slide-down"] {
+  transform: translateY(-40px);
+}
+
+[data-reveal="slide-left"] {
+  transform: translateX(40px);
+}
+
+[data-reveal="slide-right"] {
+  transform: translateX(-40px);
+}
+
+[data-reveal="scale"] {
+  transform: scale(0.9);
+}
+
+[data-reveal="rotate"] {
+  transform: rotate(-5deg) scale(0.9);
+}
+
+/* Staggered animations for multiple elements */
+[data-reveal][data-delay="1"] {
+  transition-delay: 0.1s;
+}
+[data-reveal][data-delay="2"] {
+  transition-delay: 0.2s;
+}
+[data-reveal][data-delay="3"] {
+  transition-delay: 0.3s;
+}
+[data-reveal][data-delay="4"] {
+  transition-delay: 0.4s;
+}
+[data-reveal][data-delay="5"] {
+  transition-delay: 0.5s;
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--animation-normal) var(--easing-smooth),
+    box-shadow var(--animation-normal) var(--easing-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.hover-scale {
+  transition: transform var(--animation-normal) var(--easing-smooth);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-glow {
+  transition: box-shadow var(--animation-normal) var(--easing-smooth);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--shadow-glow);
+}
+
+.hover-tilt {
+  transition: transform var(--animation-normal) var(--easing-smooth);
+}
+
+.hover-tilt:hover {
+  transform: rotateY(15deg) rotateX(5deg);
+}
+
+/* Button Animations */
+.btn-animated {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--animation-normal) var(--easing-smooth);
+}
+
+.btn-animated::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left var(--animation-slow) var(--easing-smooth);
+}
+
+.btn-animated:hover::before {
+  left: 100%;
+}
+
+.btn-animated:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Loading Animations */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Gradient Animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(
+    270deg,
+    var(--primary-color),
+    var(--primary-dark),
+    var(--secondary-color)
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Text Animations */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--text-dark) 0%,
+    var(--primary-color) 50%,
+    var(--text-dark) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Card Animations */
+.card-modern {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  transition: all var(--animation-normal) var(--easing-smooth);
+}
+
+.card-modern:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Image Hover Effects */
+.image-zoom {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.image-zoom img {
+  transition: transform var(--animation-slower) var(--easing-smooth);
+}
+
+.image-zoom:hover img {
+  transform: scale(1.1);
+}
+
+/* Parallax Effect */
+.parallax {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.1s linear;
+}
+
+/* Smooth Scroll Enhancement */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Focus Styles for Accessibility */
+.focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Loading Skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Micro-interactions */
+.interactive {
+  cursor: pointer;
+  transition: all var(--animation-fast) var(--easing-smooth);
+}
+
+.interactive:hover {
+  transform: scale(1.02);
+}
+
+.interactive:active {
+  transform: scale(0.98);
+}
+
+/* Modern Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Reveal on Scroll Utilities */
+.fade-in-up {
+  animation: fadeInUp var(--animation-slow) var(--easing-smooth) forwards;
+}
+
+.scale-in {
+  animation: scaleIn var(--animation-slow) var(--easing-smooth) forwards;
+}
+
+.slide-in-up {
+  animation: slideInUp var(--animation-slow) var(--easing-smooth) forwards;
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+.gpu-accelerated {
+  transform: translate3d(0, 0, 0);
+}
+
+/* Team Section Specific Animations */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes teamCardPulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(38, 176, 212, 0.2);
+  }
+}
+
+/* Enhanced Tilt Effect */
+[data-tilt] {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform var(--animation-normal) var(--easing-smooth);
+}
+
+/* Card Lift Animation */
+.card-lift {
+  transition: all var(--animation-normal) var(--easing-smooth);
+}
+
+.card-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Text Gradient Animation */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Magnetic Effect for Buttons */
+.magnetic {
+  transition: all var(--animation-fast) var(--easing-smooth);
+}
+
+.magnetic:hover {
+  transform: scale(1.05);
+}
+
+/* Loading Shimmer Effect */
+.loading-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus Indicators */
+*:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (forced-colors: active) {
+  .card-lift,
+  .team-card {
+    border: 1px solid;
+  }
+}
+
+/* Dark Mode Enhancements */
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}

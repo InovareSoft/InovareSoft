@@ -1,13 +1,20 @@
-/* Hero Section Styles */
+/* Hero Section Styles - Enhanced with Modern Animations */
 .hero-section {
-  min-height: 870px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 0;
-  padding-bottom: 0;
+  align-items: center;
+  padding: 0;
+  margin: 0;
   color: var(--text-light);
   overflow: hidden;
+  position: relative;
+  /* Fallback background in case images don't load */
+  background: linear-gradient(135deg, 
+    rgba(38, 176, 212, 0.8) 0%, 
+    rgba(54, 125, 175, 0.9) 50%, 
+    rgba(38, 176, 212, 0.8) 100%);
 }
 
 .hero-background {
@@ -17,84 +24,157 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  overflow: hidden;
 }
 
 .hero-bg-img,
 .hero-bg-svg {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
+  animation: float 6s ease-in-out infinite;
+  transform: scale(1.05); /* Slight scale to ensure full coverage */
 }
 
-.main-header {
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
-  z-index: 10;
+.hero-bg-img {
+  z-index: 1;
 }
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  padding: 20px 30px;
-  max-width: 1200px;
+.hero-bg-svg {
+  z-index: 2;
+  opacity: 0.8;
+  animation-delay: -3s;
+  mix-blend-mode: multiply;
 }
 
-.logo {
-  font-size: 40px;
-  font-weight: 700;
-}
-
-.logo-part1 {
-  color: var(--secondary-color);
-}
-
-.logo-part2 {
-  color: var(--primary-color);
-}
-
-.main-nav {
-  display: flex;
-  gap: 40px;
-}
-
-.main-nav a {
-  font-size: 28px;
-  color: var(--text-muted);
-  transition: color 0.3s;
-}
-
-.main-nav a:hover,
-.main-nav a:first-child {
-  color: var(--primary-color);
-}
 
 .hero-content {
-  padding-top: 150px;
+  text-align: center;
+  padding: 0 20px;
+  animation: fadeInUp 1.2s ease-out 0.5s both;
+  max-width: 1200px;
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-content h1 {
-  font-size: 64px;
+  font-size: clamp(36px, 6vw, 64px);
   font-weight: 700;
   line-height: 1.2;
-  max-width: 770px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .hero-content .highlight {
   color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Glowing effect for highlight text */
+.hero-content .highlight::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--primary-color);
+  opacity: 0.3;
+  filter: blur(20px);
+  z-index: -1;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    opacity: 0.2;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+}
+
+/* Floating particles effect */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 20% 50%,
+      rgba(29, 132, 159, 0.1) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 40% 20%,
+      rgba(29, 132, 159, 0.1) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 90% 40%,
+      rgba(29, 132, 159, 0.1) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 60% 90%,
+      rgba(29, 132, 159, 0.1) 1px,
+      transparent 1px
+    );
+  background-size: 100px 100px, 120px 120px, 80px 80px, 140px 140px;
+  animation: floatParticles 20s linear infinite;
+  z-index: -1;
+}
+
+@keyframes floatParticles {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-100px);
+  }
 }
 
 @media (max-width: 1024px) {
   .main-nav {
-    display: none; /* Simple hide for mobile, would need a burger menu for full functionality */
+    display: none;
   }
   .header-container {
     justify-content: center;
@@ -110,10 +190,88 @@
 }
 
 @media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 36px;
-  }
   .main-header {
-    top: 20px;
+    top: 10px;
+    width: calc(100% - 20px);
+  }
+  
+  .header-container {
+    padding: 12px 20px;
+    border-radius: 16px;
+  }
+  
+  .logo {
+    font-size: 28px;
+  }
+  
+  .main-nav {
+    gap: 20px;
+  }
+  
+  .main-nav a {
+    font-size: 18px;
+    padding: 8px 12px;
   }
 }
+
+@media (max-width: 480px) {
+  .main-header {
+    top: 5px;
+    width: calc(100% - 10px);
+  }
+  
+  .header-container {
+    padding: 10px 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .logo {
+    font-size: 24px;
+  }
+  
+  .main-nav {
+    gap: 15px;
+  }
+  
+  .main-nav a {
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+}
+
+/* Smooth scrolling for navigation links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset for fixed navbar when scrolling to sections */
+section {
+  scroll-margin-top: 100px;
+}
+
+/* Performance optimizations */
+.hero-bg-img,
+.hero-bg-svg,
+.hero-content,
+.main-header {
+  will-change: transform;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-img,
+  .hero-bg-svg,
+  .hero-content .highlight::after,
+  .hero-section::before {
+    animation: none;
+  }
+
+  .main-nav a:hover,
+  .logo:hover,
+  .header-container:hover {
+    transform: none;
+  }
+}
+
+/* Navbar scroll effect - removed white reveal */

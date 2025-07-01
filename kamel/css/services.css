@@ -1,17 +1,51 @@
 /* Services Section Styles */
 .services-section {
-  background-color: var(--bg-dark);
+  background: linear-gradient(
+    135deg,
+    var(--bg-dark) 0%,
+    rgba(54, 125, 175, 0.1) 100%
+  );
   padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-section::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -30%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(38, 176, 212, 0.1), transparent);
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+
+.services-section::after {
+  content: "";
+  position: absolute;
+  bottom: -40%;
+  right: -20%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(54, 125, 175, 0.08), transparent);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite reverse;
 }
 
 .services-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 414px;
+  min-height: 500px;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 .services-bg-elements {
@@ -21,17 +55,28 @@
   width: 100%;
   height: 100%;
   z-index: 0;
-  opacity: 0.3;
+  opacity: 0.15;
+  transition: opacity var(--animation-slow) var(--easing-smooth);
+}
+
+.services-container:hover .services-bg-elements {
+  opacity: 0.25;
 }
 
 .services-bg-elements img {
   position: absolute;
+  transition: transform var(--animation-slow) var(--easing-smooth);
+}
+
+.services-container:hover .services-bg-elements img {
+  transform: scale(1.05);
 }
 
 .bg-el-1 {
   top: -10%;
   right: -20%;
   width: 60%;
+  animation: float 12s ease-in-out infinite;
 }
 
 .bg-el-2 {
@@ -39,18 +84,21 @@
   left: 15%;
   height: 100%;
   width: auto;
+  animation: float 10s ease-in-out infinite 2s;
 }
 
 .bg-el-3 {
   bottom: 10%;
   left: 30%;
   width: 8%;
+  animation: float 8s ease-in-out infinite 1s;
 }
 
 .bg-el-4 {
   top: 20%;
   left: 40%;
   width: 20%;
+  animation: float 14s ease-in-out infinite 3s;
 }
 
 .services-content,
@@ -61,53 +109,146 @@
 
 .services-content {
   flex-basis: 50%;
+  padding: 40px;
 }
 
 .services-content h2 {
-  color: #d7d7d7;
-  font-size: 56px;
+  color: #e8e8e8;
+  font-size: clamp(36px, 6vw, 56px);
   font-weight: 600;
   line-height: 1.1;
-  max-width: 300px;
+  max-width: 350px;
+  background: linear-gradient(135deg, #e8e8e8, var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.services-content h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border-radius: 2px;
+  animation: shimmer 2s linear infinite;
 }
 
 .services-list {
-  flex-basis: 40%;
+  flex-basis: 45%;
+  padding: 40px;
 }
 
 .services-list ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .services-list li {
-  border-bottom: 1px solid #636060;
+  border-bottom: 1px solid rgba(99, 96, 96, 0.3);
   padding: 25px 0;
+  transition: all var(--animation-normal) var(--easing-smooth);
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.services-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  transition: width var(--animation-normal) var(--easing-smooth);
+  border-radius: 2px;
+}
+
+.services-list li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(38, 176, 212, 0.1),
+    transparent
+  );
+  transition: left var(--animation-fast) var(--easing-smooth);
+}
+
+.services-list li:hover::before {
+  width: 100%;
+}
+
+.services-list li:hover::after {
+  left: 100%;
 }
 
 .services-list li:last-child {
   border-bottom: none;
 }
 
+.services-list li:hover {
+  background: rgba(38, 176, 212, 0.1);
+  transform: translateX(15px);
+  padding-left: 25px;
+  box-shadow: 0 8px 25px rgba(38, 176, 212, 0.2);
+  border-color: rgba(38, 176, 212, 0.3);
+}
+
 .services-list a {
-  font-size: 30px;
+  font-size: clamp(20px, 3vw, 30px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #6d6d6d;
-  transition: color 0.3s;
+  color: #b8b8b8;
+  text-decoration: none;
+  transition: all var(--animation-normal) var(--easing-smooth);
+  position: relative;
+  z-index: 1;
 }
 
 .services-list li:first-child a {
   color: var(--bg-white);
+  font-weight: 600;
 }
 
 .services-list a:hover {
   color: var(--bg-white);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .services-list a img {
   width: 44px;
   height: 44px;
+  transition: all var(--animation-normal) var(--easing-bounce);
+  opacity: 0;
+  transform: scale(0.8) rotate(-10deg);
+}
+
+.services-list li:hover a img {
+  opacity: 1;
+  transform: scale(1.1) rotate(5deg);
+  filter: drop-shadow(0 4px 8px rgba(255, 255, 255, 0.2));
 }
 
 @media (max-width: 1024px) {
@@ -122,5 +263,45 @@
   }
   .services-list {
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section::before,
+  .services-section::after {
+    display: none;
+  }
+
+  .services-container {
+    min-height: 400px;
+    padding: 30px 15px;
+    margin: 20px;
+  }
+
+  .services-content h2 {
+    font-size: clamp(28px, 8vw, 42px);
+    margin-bottom: 25px;
+  }
+
+  .services-list a {
+    font-size: clamp(18px, 4vw, 24px);
+  }
+}
+
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+  .services-section::before,
+  .services-section::after,
+  .bg-el-1,
+  .bg-el-2,
+  .bg-el-3,
+  .bg-el-4 {
+    animation: none;
+  }
+
+  .services-list li,
+  .services-list a,
+  .services-bg-elements img {
+    transition: none;
   }
 }

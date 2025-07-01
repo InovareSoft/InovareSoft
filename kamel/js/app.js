@@ -16,6 +16,7 @@ class InovareSoftApp {
      */
     config = {
         components: [
+            { name: 'navbar', target: 'navbar-container' }, // Load navbar first
             { name: 'hero', target: 'hero-container' },
             { name: 'about', target: 'about-container' },
             { name: 'projects', target: 'projects-container' },
@@ -62,6 +63,13 @@ class InovareSoftApp {
     async loadAllComponents() {
         try {
             await this.loader.loadComponents(this.config.components);
+
+            // Show navbar after loading
+            this.showNavbar();
+
+            // Reinitialize scroll animations after all components are loaded
+            this.reinitializeScrollAnimations();
+
         } catch (error) {
             if (this.retryCount < this.maxRetries) {
                 this.retryCount++;
@@ -70,6 +78,19 @@ class InovareSoftApp {
                 return this.loadAllComponents();
             }
             throw error;
+        }
+    }
+
+    /**
+     * Show navbar after loading
+     */
+    showNavbar() {
+        const navbar = document.querySelector('.main-header');
+        if (navbar) {
+            setTimeout(() => {
+                navbar.classList.add('loaded');
+                console.log('🧭 Navbar revealed');
+            }, 200); // Small delay to ensure smooth transition
         }
     }
 
@@ -152,6 +173,9 @@ class InovareSoftApp {
      * Initialize application features
      */
     initializeFeatures() {
+        // Initialize scroll animations
+        this.initializeScrollAnimations();
+
         // Initialize smooth scrolling
         this.loader.initSmoothScrolling();
 
@@ -164,7 +188,199 @@ class InovareSoftApp {
         // Initialize accessibility features
         this.initializeAccessibility();
 
+        // Initialize modern interactions
+        this.initializeModernInteractions();
+
+        // Initialize fixed navbar effects
+        this.initializeNavbarEffects();
+
         console.log('🔧 Application features initialized');
+    }
+
+    /**
+     * Initialize fixed navbar effects
+     */
+    initializeNavbarEffects() {
+        // Initialize smooth scrolling for nav links only
+        this.initializeSmoothScrolling();
+
+        console.log('🧭 Navbar effects initialized');
+    }
+
+    /**
+     * Initialize smooth scrolling for navigation links
+     */
+    initializeSmoothScrolling() {
+        const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 100; // Account for fixed navbar
+
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    }
+
+    /**
+     * Initialize scroll animations
+     */
+    initializeScrollAnimations() {
+        if (window.ScrollAnimationController) {
+            this.scrollController = new ScrollAnimationController();
+
+            // Initialize after a short delay to ensure all components are loaded
+            setTimeout(() => {
+                this.scrollController.init();
+
+                // Add special effects
+                this.scrollController.addFloatingEffect('.about-icon');
+                this.scrollController.addTiltEffect('.project-card, .team-card');
+                this.scrollController.addMagneticEffect('.btn');
+
+                // Initialize team-specific effects
+                this.scrollController.initTeamEffects();
+
+                // Force reveal visible sections after a delay
+                setTimeout(() => {
+                    this.scrollController.forceRevealVisibleSections();
+                }, 1000);
+
+                // Fallback: reveal all sections after 3 seconds if still hidden
+                setTimeout(() => {
+                    this.scrollController.revealAllSections();
+                }, 3000);
+
+                console.log('🎬 Scroll animations ready');
+            }, 500);
+        }
+    }
+
+    /**
+     * Reinitialize scroll animations after components load
+     */
+    reinitializeScrollAnimations() {
+        if (this.scrollController) {
+            // Destroy existing observers
+            this.scrollController.destroy();
+
+            // Reinitialize with new DOM elements
+            setTimeout(() => {
+                this.scrollController = new ScrollAnimationController();
+                this.scrollController.init();
+
+                // Add special effects for newly loaded components
+                this.scrollController.addFloatingEffect('.about-icon');
+                this.scrollController.addTiltEffect('.project-card, .team-card');
+                this.scrollController.addMagneticEffect('.btn');
+                this.scrollController.initTeamEffects();
+
+                console.log('🔄 Scroll animations reinitialized');
+            }, 300);
+        }
+    }
+
+    /**
+     * Initialize modern interactions
+     */
+    initializeModernInteractions() {
+        // Add loading states to buttons
+        this.enhanceButtons();
+
+        // Add hover effects to images
+        this.enhanceImages();
+
+        // Add interactive feedback
+        this.addInteractiveFeedback();
+    }
+
+    /**
+     * Enhance buttons with modern interactions
+     */
+    enhanceButtons() {
+        setTimeout(() => {
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.classList.add('btn-animated');
+
+                // Add click ripple effect
+                btn.addEventListener('click', (e) => {
+                    const ripple = document.createElement('span');
+                    const rect = btn.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+          `;
+
+                    btn.style.position = 'relative';
+                    btn.style.overflow = 'hidden';
+                    btn.appendChild(ripple);
+
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // Add ripple animation
+            if (!document.getElementById('ripple-styles')) {
+                const style = document.createElement('style');
+                style.id = 'ripple-styles';
+                style.textContent = `
+          @keyframes ripple {
+            to {
+              transform: scale(2);
+              opacity: 0;
+            }
+          }
+        `;
+                document.head.appendChild(style);
+            }
+        }, 1000);
+    }
+
+    /**
+     * Enhance images with modern effects
+     */
+    enhanceImages() {
+        setTimeout(() => {
+            const images = document.querySelectorAll('.about-images, .project-img');
+            images.forEach(img => {
+                img.classList.add('image-zoom');
+            });
+        }, 1000);
+    }
+
+    /**
+     * Add interactive feedback
+     */
+    addInteractiveFeedback() {
+        setTimeout(() => {
+            const interactiveElements = document.querySelectorAll('a, button, .project-card, .team-card');
+            interactiveElements.forEach(el => {
+                el.classList.add('interactive');
+            });
+        }, 1000);
     }
 
     /**

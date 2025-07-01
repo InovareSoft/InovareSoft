@@ -5,30 +5,19 @@
       src="images/16015b1ff37c1a5c68fd8b5041aab99db3d77045.png"
       alt="Abstract background"
       class="hero-bg-img"
+      onerror="this.style.display='none'; console.warn('Hero background image failed to load')"
+      onload="console.log('Hero background image loaded successfully')"
     />
     <img
       src="images/4_3131.svg"
       alt="Abstract background overlay"
       class="hero-bg-svg"
+      onerror="this.style.display='none'; console.warn('Hero SVG overlay failed to load')"
+      onload="console.log('Hero SVG overlay loaded successfully')"
     />
   </div>
-  <header class="main-header">
-    <div class="container header-container">
-      <a href="#" class="logo">
-        <span class="logo-part1">Inovare</span
-        ><span class="logo-part2">Soft</span>
-      </a>
-      <nav class="main-nav">
-        <a href="#about">About</a>
-        <a href="#projects">Project</a>
-        <a href="#services">Service</a>
-        <a href="#team">Team</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-  <div class="container hero-content">
-    <h1>
+  <div class="container hero-content" data-reveal="fade" data-delay="2">
+    <h1 data-reveal="slide-up" data-delay="3">
       <span class="highlight">Renew</span> Your Digital World <br />with
       <span class="highlight">Smart</span>,
       <span class="highlight">Custom</span> Software
