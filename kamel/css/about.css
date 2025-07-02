@@ -67,16 +67,12 @@
 }
 
 @media (max-width: 768px) {
-  .about-images {
-    height: auto;
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
   .about-images img {
     position: static;
     width: 100%;
     height: auto;
+  }
+  .about-icon {
+    display: none;
   }
 }

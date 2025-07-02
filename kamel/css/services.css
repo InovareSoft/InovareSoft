@@ -4,7 +4,7 @@
   padding: 0;
   max-width: 1200px;
   align-items: center;
-  margin: 0 auto; /* Center horizontally */
+  margin: 60px auto 0 auto; /* Add top margin for spacing */
   display: flex;   /* Center content */
   justify-content: center;
   border-radius: 10px;
@@ -119,5 +119,12 @@
   }
   .services-list {
     width: 100%;
+    a {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .bg-el-2 {
+    width: 14%;
   }
 }

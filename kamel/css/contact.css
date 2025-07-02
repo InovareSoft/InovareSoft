@@ -20,8 +20,8 @@
 }
 
 .contact-bg-el-2 {
-padding-left: 85%;
-padding-top: 10px;
+  padding-left: 85%;
+  padding-top: 10px;
 }
 
 .bg-text-line2 {
@@ -49,6 +49,7 @@ padding-top: 10px;
   justify-content: flex-end;
   gap: 40px;
   padding-bottom: 80px;
+  user-select: none;
 }
 
 .contact-info-item .info-value:hover {
@@ -145,14 +146,17 @@ padding-top: 10px;
   .contact-content {
     flex-direction: column;
   }
+
   .contact-bg-text {
     font-size: 80px;
     transform: translate(-50%, -50%);
     text-align: center;
   }
+
   .bg-text-line2 {
     margin-left: 0;
   }
+
   .contact-info-area {
     flex-direction: row;
     justify-content: space-around;
@@ -164,6 +168,43 @@ padding-top: 10px;
   .contact-bg-text {
     display: none;
   }
+
+  .contact-info-area {
+    display: grid;
+    text-align: center;
+  }
+
+  .contact-info-item .info-label {
+    text-align: center;
+  }
+
+  .contact-bg-elements {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    transform: translate(-30%, -50%);
+    z-index: 0;
+    color: transparent;
+    opacity: 0.21;
+    white-space: nowrap;
+  }
+
+  .contact-title,
+  .contact-subtitle {
+    text-align: center;
+  }
+
+  .contact-bg-el-2 {
+    padding-left: 40%;
+    padding-top: 10px;
+  }
+
+  .btn {
+    /* padding: 10px 20px; */
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
   .contact-buttons {
     flex-direction: column;
     align-items: flex-start;

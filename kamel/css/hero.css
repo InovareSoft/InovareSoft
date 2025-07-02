@@ -40,13 +40,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(254, 254, 254, 0.8);
+  background-color: rgb(254, 254, 254, 0.6);
   border-radius: 20px;
   padding: 20px 30px;
   max-width: 1200px;
   backdrop-filter: blur(10px);
     --webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 42px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 42px rgba(0, 0, 0, 0.4);
 }
 
 .logo {
@@ -112,10 +112,17 @@
 }
 
 @media (max-width: 768px) {
+  .header-container {
+    max-width: 400px;
+  }
   .hero-content h1 {
     font-size: 36px;
   }
   .main-header {
     top: 20px;
+  }
+  .hero-section {
+    min-height: 400px;
+    max-height: 600px;
   }
 }
