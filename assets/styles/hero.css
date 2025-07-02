@@ -40,7 +40,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(254, 254, 254, 0.6);
+  background-color: rgb(254, 254, 254, 0.4);
   border-radius: 20px;
   padding: 20px 30px;
   max-width: 1200px;
@@ -51,7 +51,7 @@
 
 .logo {
   font-weight: var(--font-weight-h2-bold);
-    font-size: var(--font-size-h2-bold);
+  font-size: var(--font-size-h2-bold);
 }
 
 .logo-part1 {
@@ -69,7 +69,7 @@
 
 .main-nav a {
   font-size: 28px;
-  color: var(--text-muted);
+  color: var(--secondary-color);
   transition: color 0.3s;
 }
 
