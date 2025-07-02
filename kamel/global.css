@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #26b0d4;
+    --primary-color: #229EBF;
     --primary-dark: #1c9ec1;
-    --secondary-color: #1c2d41;
-    --text-light: #e9f7fb;
+    --secondary-color: #1C2D41;
+    --text-light: #DEF3F9;
     --text-dark: #3f3f3f;
     --text-muted: #555555;
-    --bg-light: #f3f3f3;
-    --bg-white: #ffffff;
+    --bg-light: #E9F7FB;
+    --bg-white: #FEFEFE;
     --bg-dark: #3f3f3f;
+
 }
 
 body {
@@ -19,7 +20,7 @@ body {
 }
 
 .container {
-    max-width: 1440px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 20px;

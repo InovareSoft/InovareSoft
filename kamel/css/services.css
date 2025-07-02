@@ -2,6 +2,12 @@
 .services-section {
   background-color: var(--bg-dark);
   padding: 0;
+  max-width: 1200px;
+  align-items: center;
+  margin: 0 auto; /* Center horizontally */
+  display: flex;   /* Center content */
+  justify-content: center;
+  border-radius: 10px;
 }
 
 .services-container {
@@ -12,6 +18,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 8px;
+  width: 100%; /* Ensure full width inside section */
 }
 
 .services-bg-elements {
@@ -29,8 +36,6 @@
 }
 
 .bg-el-1 {
-  top: -10%;
-  right: -20%;
   width: 60%;
 }
 
@@ -38,19 +43,13 @@
   top: 0;
   left: 15%;
   height: 100%;
-  width: auto;
+  width: 9%;
 }
 
 .bg-el-3 {
   bottom: 10%;
   left: 30%;
   width: 8%;
-}
-
-.bg-el-4 {
-  top: 20%;
-  left: 40%;
-  width: 20%;
 }
 
 .services-content,
@@ -61,10 +60,11 @@
 
 .services-content {
   flex-basis: 50%;
+  padding-left: 5%;
 }
 
 .services-content h2 {
-  color: #d7d7d7;
+  color: var(--text-light);
   font-size: 56px;
   font-weight: 600;
   line-height: 1.1;
@@ -93,16 +93,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #6d6d6d;
+  color: var(--text-light);
   transition: color 0.3s;
 }
 
-.services-list li:first-child a {
-  color: var(--bg-white);
-}
 
-.services-list a:hover {
-  color: var(--bg-white);
+.services-list a:hover{
+  color: var(--primary-color);
 }
 
 .services-list a img {

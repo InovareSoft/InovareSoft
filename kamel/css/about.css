@@ -1,3 +1,4 @@
+@import url('fonts.css');
 /* About Section Styles */
 .about-section {
   background-color: var(--bg-white);
@@ -15,31 +16,9 @@
   height: 436px;
 }
 
-.about-images img {
-  position: absolute;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-.about-img-1 {
-  width: 321px;
-  height: 333px;
-  top: 0;
-  left: 0;
-}
-
-.about-img-2 {
-  width: 321px;
-  height: 292px;
-  top: 0;
-  right: 0;
-}
-
-.about-img-3 {
-  width: 321px;
-  height: 132px;
-  bottom: 0;
-  right: 0;
+.about-img {
+  width: 100%;
+  height: 100%;
 }
 
 .about-text {
@@ -50,20 +29,22 @@
 .about-icon {
   width: 100px;
   height: 100px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-left: 70%;
 }
 
 .about-text h2 {
-  color: var(--primary-color);
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 24px;
+  font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-h1-bold);
+    color: var(--primary-color);
+    margin-bottom: 24px;
 }
 
 .about-text p {
-  font-size: 23px;
+  font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-h5);
+    color: var(--dark-color);
   line-height: 1.4;
-  color: #0a1017;
 }
 
 @media (max-width: 1024px) {
