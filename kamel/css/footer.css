@@ -3,18 +3,10 @@
   background-color: #229ebf;
   color: var(--text-light);
   padding: 50px 0;
-  /* position: relative; */
+  position: relative;
   overflow: hidden;
+  user-select: none;
 }
-
-/* .footer-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-} */
 
 .footer-container {
   position: relative;
@@ -47,6 +39,7 @@
 }
 
 .footer-links {
+  margin-top: 50px;
   text-align: right;
 }
 
@@ -67,14 +60,18 @@
 }
 
 .footer-social {
+  margin-top: 10px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 20px;
 }
 
 .footer-social a {
-  width: 35px;
-  height: 35px;
+  font-size: 25px;
+}
+
+.footer-social a:hover {
+  color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {
