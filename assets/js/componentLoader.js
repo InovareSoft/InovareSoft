@@ -71,7 +71,7 @@ class ComponentLoader {
 
         try {
             // Load CSS first to prevent FOUC (Flash of Unstyled Content)
-            await this.loadCSS(`css/${componentName}.css`);
+            await this.loadCSS(`assets/styles/${componentName}.css`);
 
             // Load HTML content
             const htmlContent = await this.loadHTML(`layouts/${componentName}.html`);

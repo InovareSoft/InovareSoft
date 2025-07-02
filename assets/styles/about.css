@@ -1,0 +1,78 @@
+@import url('fonts.css');
+/* About Section Styles */
+.about-section {
+  background-color: var(--bg-white);
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.about-images {
+  flex: 1;
+  position: relative;
+  height: 436px;
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+}
+
+.about-text {
+  flex: 1;
+  max-width: 511px;
+}
+
+.about-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 30px;
+  margin-left: 70%;
+}
+
+.about-text h2 {
+  font-size: var(--font-size-h1);
+    font-weight: var(--font-weight-h1-bold);
+    color: var(--primary-color);
+    margin-bottom: 24px;
+}
+
+.about-text p {
+  font-size: var(--font-size-h5);
+    font-weight: var(--font-weight-h5);
+    color: var(--dark-color);
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .about-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .about-images {
+    width: 100%;
+    max-width: 654px;
+  }
+  .about-text {
+    text-align: center;
+    max-width: 100%;
+  }
+  .about-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-images img {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+  .about-icon {
+    display: none;
+  }
+}
