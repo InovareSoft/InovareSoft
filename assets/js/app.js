@@ -279,6 +279,15 @@ document.addEventListener('DOMContentLoaded', () => {
     window.inovareSoftApp = app;
 });
 
+// Dynamically load the loading screen
+window.addEventListener('DOMContentLoaded', function () {
+  fetch('layouts/loadingscreen.html')
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('loading-screen-container').innerHTML = html;
+    });
+});
+
 // Handle uncaught errors
 window.addEventListener('error', (event) => {
     console.error('Uncaught error:', event.error);

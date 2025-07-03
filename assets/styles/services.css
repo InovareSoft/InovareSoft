@@ -2,7 +2,7 @@
 .services-section {
   background-color: var(--bg-dark);
   padding: 0;
-  max-width: 1200px;
+  max-width: 1150px;
   align-items: center;
   margin: 60px auto 0 auto; /* Add top margin for spacing */
   display: flex;   /* Center content */
