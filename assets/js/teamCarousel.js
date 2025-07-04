@@ -30,16 +30,16 @@ new Swiper(".wrapper", {
     breakpoints: {
         0: {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 10,
             centeredSlides: true,
             loop: true,
             navigation: false,
         },
         768: {
-            slidesPerView: 2,
-            spaceBetween: 20,
+            slidesPerView: 1,
+            spaceBetween: 30,
             centeredSlides: false,
-            loop: true,
+            loop: false,
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",

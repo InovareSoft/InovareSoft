@@ -29,7 +29,7 @@
 
 .main-header {
   position: fixed;
-  top: 50px;
+  top: 25px;
   left: 0;
   width: 100%;
   z-index: 10;
@@ -42,7 +42,7 @@
   align-items: center;
   background-color: rgb(254, 254, 254, 0.4);
   border-radius: 20px;
-  padding: 20px 30px;
+  padding: 15px 20px;
   max-width: 1200px;
   backdrop-filter: blur(10px);
     --webkit-backdrop-filter: blur(10px);

@@ -50,7 +50,7 @@ class EmailService {
             console.error('Formspree sending failed:', error);
 
             // Fallback to mailto
-            console.warn('📧 Using mailto fallback due to service error');
+            console.warn('Using mailto fallback due to service error');
             return this.sendViaMailto(formData);
         }
     }
