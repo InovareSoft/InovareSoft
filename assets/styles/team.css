@@ -242,16 +242,16 @@
   } */
 
   /* Card mobile styling */
-    .wrapper .card {
-      /* width: 90%; */
+    /* .wrapper .card {
+      width: 90%; */
       /* max-width: 300px; */
-      /* margin: 0 auto; */
-    }
+      /* margin: 0 auto;
+    } */
 
   /* Pagination centering */
-  .wrapper .swiper-pagination {
+  /* .wrapper .swiper-pagination {
     text-align: center;
     margin-top: 20px;
     position: relative;
-  }
+  } */
 }
