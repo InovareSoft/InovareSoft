@@ -83,7 +83,14 @@ class ComponentLoader {
             }
 
             targetElement.innerHTML = htmlContent;
+
+            // Execute any scripts in the loaded HTML
+            this.executeScripts(targetElement);
+
             this.loadedComponents.add(componentName);
+
+            // Initialize component-specific JavaScript
+            await this.initializeComponentJS(componentName);
 
             console.log(`✅ Component '${componentName}' loaded successfully`);
         } catch (error) {
@@ -165,6 +172,122 @@ class ComponentLoader {
                     });
                 }
             }
+        });
+    }
+
+    /**
+     * Initialize component-specific JavaScript
+     * @param {string} componentName - Name of the component
+     * @returns {Promise<void>}
+     */
+    async initializeComponentJS(componentName) {
+        try {
+            switch (componentName) {
+                case 'team':
+                    await this.initializeTeamSwiper();
+                    break;
+                // Add other component initializations here as needed
+                default:
+                    // No specific initialization needed
+                    break;
+            }
+        } catch (error) {
+            console.error(`❌ Failed to initialize JS for component '${componentName}':`, error);
+            throw error;
+        }
+    }
+
+    /**
+     * Initialize Team Swiper after the team component is loaded
+     * @returns {Promise<void>}
+     */
+    async initializeTeamSwiper() {
+        return new Promise((resolve, reject) => {
+            // Wait a bit for DOM to be ready
+            setTimeout(() => {
+                try {
+                    // Check if Swiper is available and wrapper exists
+                    if (typeof Swiper === 'undefined') {
+                        console.error('Swiper library is not loaded');
+                        reject(new Error('Swiper library is not loaded'));
+                        return;
+                    }
+
+                    const wrapperElement = document.querySelector(".wrapper");
+                    if (!wrapperElement) {
+                        console.error('Swiper wrapper element not found');
+                        reject(new Error('Swiper wrapper element not found'));
+                        return;
+                    }
+
+                    // Initialize Swiper with the same configuration as teamCarousel.js
+                    new Swiper(".wrapper", {
+                        loop: true,
+                        spaceBetween: 30,
+
+                        // Autoplay
+                        autoplay: {
+                            delay: 2500,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        },
+
+                        // Pagination bullets
+                        pagination: {
+                            el: ".swiper-pagination",
+                            clickable: true,
+                            dynamicBullets: true,
+                        },
+
+                        // Navigation arrows
+                        navigation: {
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
+                        },
+
+                        // Responsive breakpoints
+                        breakpoints: {
+                            0: {
+                                slidesPerView: 1,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1024: {
+                                slidesPerView: 3,
+                            },
+                        },
+                    });
+
+                    console.log('✅ Team Swiper initialized successfully');
+                    resolve();
+                } catch (error) {
+                    console.error('❌ Error initializing Team Swiper:', error);
+                    reject(error);
+                }
+            }, 100); // Small delay to ensure DOM is ready
+        });
+    }
+
+    /**
+     * Execute scripts in loaded HTML content
+     * @param {HTMLElement} container - Container element with loaded HTML
+     */
+    executeScripts(container) {
+        const scripts = container.querySelectorAll('script');
+        scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+
+            // Copy attributes
+            Array.from(oldScript.attributes).forEach(attr => {
+                newScript.setAttribute(attr.name, attr.value);
+            });
+
+            // Copy script content
+            newScript.textContent = oldScript.textContent;
+
+            // Replace old script with new one to execute it
+            oldScript.parentNode.replaceChild(newScript, oldScript);
         });
     }
 }
