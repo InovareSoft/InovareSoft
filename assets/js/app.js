@@ -171,29 +171,147 @@ class InovareSoftApp {
      * Initialize contact form handling
      */
     initializeContactForm() {
+        // Initialize email service
+        this.emailService = new EmailService();
+
         // Wait for contact form to be loaded
         setTimeout(() => {
-            const contactForm = document.querySelector('.contact-form');
+            const contactForm = document.getElementById('contact-form');
             if (contactForm) {
                 contactForm.addEventListener('submit', this.handleContactForm.bind(this));
+                console.log('📧 Contact form initialized');
             }
         }, 1000);
     }
 
     /**
-     * Handle contact form submission
+     * Handle contact form submission with enhanced validation
      */
-    handleContactForm(event) {
+    async handleContactForm(event) {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
+        const form = event.target;
+        const formData = new FormData(form);
         const data = Object.fromEntries(formData);
 
         console.log('📧 Contact form submitted:', data);
 
-        // Here you would typically send the data to your backend
-        // For now, we'll just show a success message
-        alert('Thank you for your message! We\'ll get back to you soon.');
+        // Clear previous validation states
+        this.clearFieldErrors();
+
+        // Show loading state
+        this.setFormLoadingState(true);
+
+        try {
+            // Validate form data
+            const validation = this.emailService.validateFormData(data);
+            if (!validation.isValid) {
+                this.showFieldErrors(validation.fieldErrors);
+                this.showFormStatus('error', 'Please fix the errors above and try again.');
+                return;
+            }
+
+            // Send email
+            const result = await this.emailService.sendEmail(data);
+
+            if (result.success) {
+                this.showFormStatus('success', result.message);
+                form.reset(); // Clear the form
+                this.clearFieldErrors(); // Clear any validation states
+
+                // Add success animation
+                this.addSuccessAnimation();
+            } else {
+                this.showFormStatus('error', result.message || 'Failed to send message. Please try again.');
+            }
+
+        } catch (error) {
+            console.error('Form submission error:', error);
+            this.showFormStatus('error', 'An unexpected error occurred. Please try again or contact us directly.');
+        } finally {
+            this.setFormLoadingState(false);
+        }
+    }
+
+    /**
+     * Clear field validation errors
+     */
+    clearFieldErrors() {
+        const formGroups = document.querySelectorAll('.form-group');
+        formGroups.forEach(group => {
+            group.classList.remove('error', 'success');
+        });
+    }
+
+    /**
+     * Show field-specific validation errors
+     */
+    showFieldErrors(fieldErrors) {
+        Object.keys(fieldErrors).forEach(fieldName => {
+            const field = document.getElementById(fieldName);
+            const errorElement = document.getElementById(`${fieldName}-error`);
+
+            if (field && errorElement) {
+                const formGroup = field.closest('.form-group');
+                if (formGroup) {
+                    formGroup.classList.add('error');
+                }
+                errorElement.textContent = fieldErrors[fieldName];
+            }
+        });
+    }
+
+    /**
+     * Add success animation to form
+     */
+    addSuccessAnimation() {
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                form.style.transform = 'scale(1)';
+                form.style.transition = 'transform 0.3s ease';
+            }, 200);
+        }
+    }
+
+    /**
+     * Set form loading state with enhanced UX
+     */
+    setFormLoadingState(isLoading) {
+        const submitBtn = document.getElementById('submit-btn');
+        const submitText = document.getElementById('submit-text');
+        const submitLoader = document.getElementById('submit-loader');
+
+        if (submitBtn && submitText && submitLoader) {
+            submitBtn.disabled = isLoading;
+            if (isLoading) {
+                submitBtn.classList.add('loading');
+            } else {
+                submitBtn.classList.remove('loading');
+            }
+            submitText.style.display = isLoading ? 'none' : 'inline';
+            submitLoader.style.display = isLoading ? 'inline' : 'none';
+        }
+    }
+
+    /**
+     * Show form status message
+     */
+    showFormStatus(type, message) {
+        const statusElement = document.getElementById('form-status');
+        if (statusElement) {
+            statusElement.className = `form-status ${type}`;
+            statusElement.innerHTML = message;
+            statusElement.style.display = 'block';
+
+            // Auto-hide success messages after 5 seconds
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusElement.style.display = 'none';
+                }, 5000);
+            }
+        }
     }
 
     /**
@@ -281,11 +399,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Dynamically load the loading screen
 window.addEventListener('DOMContentLoaded', function () {
-  fetch('layouts/loadingscreen.html')
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('loading-screen-container').innerHTML = html;
-    });
+    fetch('layouts/loadingscreen.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('loading-screen-container').innerHTML = html;
+        });
 });
 
 // Handle uncaught errors
@@ -297,3 +415,20 @@ window.addEventListener('error', (event) => {
 window.addEventListener('unhandledrejection', (event) => {
     console.error('Unhandled promise rejection:', event.reason);
 });
+
+/**
+ * Global helper function to select service type
+ */
+window.selectService = function (serviceType) {
+    const serviceSelect = document.getElementById('service');
+    if (serviceSelect) {
+        serviceSelect.value = serviceType;
+
+        // Visual feedback - highlight selected button
+        const buttons = document.querySelectorAll('.contact-buttons .btn');
+        buttons.forEach(btn => btn.classList.remove('selected'));
+
+        const clickedButton = event.target;
+        clickedButton.classList.add('selected');
+    }
+};

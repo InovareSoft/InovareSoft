@@ -12,12 +12,9 @@
   overflow: hidden;
 }
 
-/* Swiper slide fix */
 .swiper-slide {
   width: 320px !important;
   flex-shrink: 0;
-  display: flex;
-  justify-content: center;
 }
 
 .wrapper .card {
@@ -38,6 +35,15 @@
   background-size: 200% 200%;
   animation: none;
   margin: 0 12px;
+}
+
+/* Mobile card adjustments */
+@media (max-width: 768px) {
+  .wrapper .card {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 300px;
+  }
 }
 
 .wrapper .card:hover {
@@ -204,10 +210,41 @@
 /* Responsive media query */
 @media (max-width: 768px) {
   .wrapper {
-    margin: 0 10px 25px;
+    margin: 0 auto 25px;
+    padding: 20px 0;
+    width: 100%;
   }
 
   .wrapper :where(.swiper-button-prev, .swiper-button-next) {
-    display: none;
+    display: none !important;
+  }
+
+  /* Container centering */
+  .container.swiper {
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+
+  /* Swiper slide mobile centering */
+  .swiper-slide {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Card mobile styling */
+  .wrapper .card {
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Pagination centering */
+  .wrapper .swiper-pagination {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
   }
 }

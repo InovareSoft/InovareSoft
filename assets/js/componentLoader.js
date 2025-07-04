@@ -224,6 +224,7 @@ class ComponentLoader {
                     new Swiper(".wrapper", {
                         loop: true,
                         spaceBetween: 30,
+                        centeredSlides: true,
 
                         // Autoplay
                         autoplay: {
@@ -249,12 +250,18 @@ class ComponentLoader {
                         breakpoints: {
                             0: {
                                 slidesPerView: 1,
+                                spaceBetween: 10,
+                                centeredSlides: true,
                             },
                             768: {
                                 slidesPerView: 2,
+                                spaceBetween: 20,
+                                centeredSlides: false,
                             },
                             1024: {
                                 slidesPerView: 3,
+                                spaceBetween: 30,
+                                centeredSlides: false,
                             },
                         },
                     });
