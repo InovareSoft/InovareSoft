@@ -17,6 +17,7 @@ body {
     background-color: var(--bg-light);
     color: var(--text-dark);
     overflow-x: hidden;
+    user-select: none;
 }
 
 .container {

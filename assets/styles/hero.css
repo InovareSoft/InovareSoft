@@ -10,7 +10,7 @@
   padding-bottom: 0;
   color: var(--text-light);
   overflow: hidden;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 100%, transparent 50%), url('../images/16015b1ff37c1a5c68fd8b5041aab99db3d77045.png') center/cover no-repeat;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 100%, transparent 50%), url('../images/Hero-section.png') center/cover no-repeat;
   background-size: cover;
   min-height: 600px;
     max-height: 800px;
@@ -73,8 +73,7 @@
   transition: color 0.3s;
 }
 
-.main-nav a:hover,
-.main-nav a:first-child {
+.main-nav a:hover {
   color: var(--primary-color);
 }
 
@@ -100,6 +99,8 @@
   }
   .header-container {
     justify-content: center;
+    padding: 10px 15px;
+    max-width: 770px;
   }
   .hero-content h1 {
     font-size: 48px;
@@ -113,13 +114,14 @@
 
 @media (max-width: 768px) {
   .header-container {
-    max-width: 400px;
+    max-width: 370px;
+    padding: 5px 10px;
   }
   .hero-content h1 {
     font-size: 36px;
   }
   .main-header {
-    top: 20px;
+    top: 15px;
   }
   .hero-section {
     min-height: 400px;
