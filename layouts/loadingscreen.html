@@ -1,0 +1,72 @@
+<style>
+  @keyframes live-gradient {
+    0% {
+      background-position: left top;
+    }
+    50% {
+      background-position: right bottom;
+    }
+    100% {
+      background-position: left top;
+    }
+  }
+
+  #loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(
+      135deg,
+      rgba(38, 176, 212, 0.8) 0%,
+      rgba(54, 125, 175, 0.9) 50%,
+      rgba(38, 176, 212, 0.6) 100%
+    );
+    background-size: 300% 300%;
+    animation: live-gradient 2s linear infinite;
+    transition: opacity 0.5s ease-out;
+  }
+
+  #logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 128px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .logo-light {
+    color: #DEF3F9;
+  }
+
+  .logo-dark{
+    color: #1C2D41;
+  }
+
+  #loading-text {
+    font-family: 'Outfit', sans-serif;
+    color: #eeeeee;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  @media (max-width: 768px){
+    #logo {
+      font-size: 65px;
+    }
+  }
+</style>
+
+<div id="loading-screen">
+  <div id="logo" class="logo">
+    <span class="logo-dark">Inovare</span><span class="logo-light">Soft</span>
+  </div>
+  <p id="loading-text">Loading...</p>
+</div>

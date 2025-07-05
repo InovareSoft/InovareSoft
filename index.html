@@ -1,134 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inovare Soft</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>InovareSoft</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="InovareSoft - Custom software development for fintech, healthcare, education, and tech businesses. Expert developers delivering smart, cutting-edge digital solutions."
+    />
+    <meta
+      name="keywords"
+      content="software development, custom software, web development, mobile apps, fintech, healthcare technology"
+    />
+    <meta name="author" content="InovareSoft" />
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Outfit', sans-serif;
-    }
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="InovareSoft - Smart Custom Software Solutions"
+    />
+    <meta
+      property="og:description"
+      content="Renew your digital world with smart, custom software solutions from InovareSoft"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="#" />
 
-    body {
-      background-color: #DEF3F9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 40px 16px;
-      text-align: center;
-    }
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    h1 {
-      user-select: none;
-      font-weight: 700;
-      font-size: 64px; /* smaller base for tiny phones */
-      margin-bottom: 24px;
-      line-height: 1.2;
-      word-wrap: break-word;
-    }
+    <!-- Google Fonts -->
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    /> -->
 
-    h1 .logo-dark {
-      color: #1C2D41;
-    }
+    <!-- Local Font Styles -->
+    <link rel="stylesheet" href="assets/styles/font.css" />
 
-    h1 .logo-light {
-      color: #229EBF;
-    }
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="assets/styles/global.css" />
 
-    .des {
-      user-select: none;
-      font-weight: 700;
-      font-size: 30px;
-      color: #1C2D41;
-      margin: 16px 0 24px;
-      line-height: 1.5;
-    }
+    <!-- Configuration -->
+    <script src="assets/js/config.js"></script>
 
-    .blue {
-      color: #229EBF;
-    }
+    <!-- Component Loader Script -->
+    <script src="assets/js/componentLoader.js"></script>
 
-    .social {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /* margin: 24px 0; */
-      padding-top: 15px;
-      text-decoration: none;
-    }
+    <!-- Development Utils (only loads in dev mode) -->
+    <script src="assets/js/devUtils.js"></script>
 
+    <!-- Team Carousel Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    .social i {
-      font-size: 50px;
-      color: #229EBF;
-      transition: color 0.2s;
-    }
+    <!-- Email Service Script -->
+    <script src="assets/js/emailService.js"></script>
 
-    .social:hover i {
-      color: #1C2D41;
-    }
+    <!-- Main Application Script -->
+    <script src="assets/js/app.js" defer></script>
 
-    h2 {
-      user-select: none;
-      font-family: 'Pacifico', cursive;
-      font-weight: 500;
-      font-size: 25px;
-      color: #229EBF;
-      margin-top: 50px;
-    }
+    <!-- Fallback for older browsers -->
+    <noscript>
+      <style>
+        .no-js-message {
+          display: block;
+          background: #f44336;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <!-- No JavaScript fallback -->
+    <noscript>
+      <div class="no-js-message">
+        This website requires JavaScript to function properly. Please enable
+        JavaScript in your browser.
+      </div>
+    </noscript>
 
-    /* Tablet (600px and up) */
-    @media (min-width: 600px) {
-      h1 {
-        font-size: 115px;
+    <!-- Loading Screen Container -->
+    <div id="loading-screen-container"></div>
+
+    <!-- Main Content Containers -->
+    <main
+      id="main-content"
+      style="opacity: 0; transition: opacity 0.5s ease-in"
+    >
+      <!-- Hero Section Container -->
+      <div id="hero-container"></div>
+
+      <!-- About Section Container -->
+      <div id="about-container"></div>
+
+      <!-- Projects Section Container -->
+      <div id="projects-container"></div>
+
+      <!-- Services Section Container -->
+      <div id="services-container"></div>
+
+      <!-- Team Section Container -->
+      <div id="team-container"></div>
+
+      <!-- Contact Section Container -->
+      <div id="contact-container"></div>
+
+      <!-- Footer Container -->
+      <div id="footer-container"></div>
+    </main>
+
+    <!-- Error Message Container -->
+    <div
+      id="error-container"
+      style="
+        display: none;
+        padding: 40px 20px;
+        text-align: center;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        margin: 20px;
+        border-radius: 8px;
+      "
+    >
+      <h2 style="color: #dc3545; margin-bottom: 15px">Something went wrong</h2>
+      <p style="color: #666; margin-bottom: 20px">
+        We're having trouble loading the page. Please try refreshing.
+      </p>
+      <button
+        onclick="location.reload()"
+        style="
+          background: #1d849f;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+        "
+      >
+        Refresh Page
+      </button>
+    </div>
+
+    <!-- Inline Styles for Loading Animation -->
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
-      .des {
-        font-size: 50px;
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
       }
 
-      h2 {
-        font-size: 35px;
-      }
-    }
-
-    /* Desktop (992px and up) */
-    @media (min-width: 992px) {
-      h1 {
-        font-size: 128px;
+      /* Error state styles */
+      .error-state {
+        opacity: 0.5;
+        pointer-events: none;
       }
 
-      .des {
-        font-size: 55px;
+      /* Loading state styles */
+      .loading-state {
+        position: relative;
       }
 
-      h2 {
-        font-size: 45px;
+      .loading-state::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
       }
-    }
-  </style>
-</head>
-
-<body>
-  <h1><span class="logo-dark">Inovare</span><span class="logo-light">Soft</span></h1>
-  <div class="des">
-    <span class="blue">Renew</span> Your Digital World <br />
-    with <span class="blue">Smart</span>, <span class="blue">Custom</span> Software
-  </div>
-  <a class="social" href="https://www.instagram.com/inovaresoft/">
-    <i class="fa fa-instagram"></i>
-  </a>
-  <h2>Coming Soon</h2>
-</body>
-
+    </style>
+  </body>
 </html>
