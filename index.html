@@ -1,43 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inovare Soft</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/main.css" />
-    <title>InovareSoft</title>
-</head>
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="InovareSoft - Custom software development for fintech, healthcare, education, and tech businesses. Expert developers delivering smart, cutting-edge digital solutions."
+    />
+    <meta
+      name="keywords"
+      content="software development, custom software, web development, mobile apps, fintech, healthcare technology"
+    />
+    <meta name="author" content="InovareSoft" />
 
-<body>
-    <div class="container">
-        <!-- Navbar -->
-        <nav>
-            <!-- <link rel="stylesheet" href="assets/styles/navbar.css" /> -->
-            <div class="logo">
-                <a href="#"><span class="logo-dark">Inovare</span><span class="logo-light">Soft</span></a>
-            </div>
-            <div class="nav-links">
-                <a href="#" class="active">About Us</a>
-                <a href="#">Projects</a>
-                <a href="#">Services</a>
-                <a href="#">Teams</a>
-                <a href="#">Contact Us</a>
-            </div>
-        </nav>
-        <!-- End of Navbar -->
+    <!-- Open Graph Meta Tags -->
+    <meta
+      property="og:title"
+      content="InovareSoft - Smart Custom Software Solutions"
+    />
+    <meta
+      property="og:description"
+      content="Renew your digital world with smart, custom software solutions from InovareSoft"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="#" />
 
-        <!-- Hero Section -->
-        <header>
-            <div class="overlay"></div>
-            <div class="hero-content">
-                <h1>
-                    <span class="blue">Renew</span> Your Digital World with <span class="blue">Smart</span>, <span class="blue">Custom</span> Software
-                </h1>
-            </div>
-        </header>
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
+    <!-- <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    /> -->
+
+    <!-- Local Font Styles -->
+    <link rel="stylesheet" href="assets/styles/font.css" />
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="assets/styles/global.css" />
+
+    <!-- Configuration -->
+    <script src="assets/js/config.js"></script>
+
+    <!-- Component Loader Script -->
+    <script src="assets/js/componentLoader.js"></script>
+
+    <!-- Development Utils (only loads in dev mode) -->
+    <script src="assets/js/devUtils.js"></script>
+
+    <!-- Team Carousel Script -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Email Service Script -->
+    <script src="assets/js/emailService.js"></script>
+
+    <!-- Main Application Script -->
+    <script src="assets/js/app.js" defer></script>
+
+    <!-- Fallback for older browsers -->
+    <noscript>
+      <style>
+        .no-js-message {
+          display: block;
+          background: #f44336;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body>
+    <!-- No JavaScript fallback -->
+    <noscript>
+      <div class="no-js-message">
+        This website requires JavaScript to function properly. Please enable
+        JavaScript in your browser.
+      </div>
+    </noscript>
+
+    <!-- Loading Screen Container -->
+    <div id="loading-screen-container"></div>
+
+    <!-- Main Content Containers -->
+    <main
+      id="main-content"
+      style="opacity: 0; transition: opacity 0.5s ease-in"
+    >
+      <!-- Hero Section Container -->
+      <div id="hero-container"></div>
+
+      <!-- About Section Container -->
+      <div id="about-container"></div>
+
+      <!-- Projects Section Container -->
+      <div id="projects-container"></div>
+
+      <!-- Services Section Container -->
+      <div id="services-container"></div>
+
+      <!-- Team Section Container -->
+      <div id="team-container"></div>
+
+      <!-- Contact Section Container -->
+      <div id="contact-container"></div>
+
+      <!-- Footer Container -->
+      <div id="footer-container"></div>
+    </main>
+
+    <!-- Error Message Container -->
+    <div
+      id="error-container"
+      style="
+        display: none;
+        padding: 40px 20px;
+        text-align: center;
+        background: #f8f9fa;
+        border: 1px solid #e9ecef;
+        margin: 20px;
+        border-radius: 8px;
+      "
+    >
+      <h2 style="color: #dc3545; margin-bottom: 15px">Something went wrong</h2>
+      <p style="color: #666; margin-bottom: 20px">
+        We're having trouble loading the page. Please try refreshing.
+      </p>
+      <button
+        onclick="location.reload()"
+        style="
+          background: #1d849f;
+          color: white;
+          border: none;
+          padding: 12px 24px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+        "
+      >
+        Refresh Page
+      </button>
     </div>
 
+    <!-- Inline Styles for Loading Animation -->
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
 
-</body>
+      /* Smooth scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
 
+      /* Error state styles */
+      .error-state {
+        opacity: 0.5;
+        pointer-events: none;
+      }
+
+      /* Loading state styles */
+      .loading-state {
+        position: relative;
+      }
+
+      .loading-state::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+      }
+    </style>
+  </body>
 </html>
