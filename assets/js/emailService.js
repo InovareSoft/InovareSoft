@@ -6,16 +6,17 @@
 class EmailService {
     constructor() {
         // Formspree endpoint - replace YOUR_FORM_ID with your actual Formspree form ID
-        this.formspreeEndpoint = 'https://formspree.io/f/manjzypa';
+        // this.formspreeEndpoint = 'https://formspree.io/f/manjzypa';
+        this.formspreeEndpoint = 'https://formspree.io/f/xpwrgaae';
         // Backup endpoint for immediate use (you'll get your own after setup)
-        this.backupEndpoint = 'https://formspree.io/f/xdkngrpd'; // Temporary demo endpoint
+        this.backupEndpoint = 'https://formspree.io/f/manjzypa'; // Temporary demo endpoint
         this.isInitialized = true; // Formspree doesn't need initialization
     }    /**
      * Send email using Formspree
      */
     async sendEmail(formData) {
         try {
-            console.log('📧 Sending email via Formspree...');
+            // console.log('Sending email via Formspree...');
 
             const response = await fetch(this.formspreeEndpoint, {
                 method: 'POST',
@@ -28,7 +29,7 @@ class EmailService {
                     email: formData.email,
                     phone: formData.phone || 'Not provided',
                     service: formData.service,
-                    message: formData.details,
+                    Project_Details: formData.details,
                     _subject: `New Contact Request - ${formData.service} | ${formData.name}`,
                     _replyto: formData.email,
                     _format: 'plain'
@@ -50,39 +51,39 @@ class EmailService {
             console.error('Formspree sending failed:', error);
 
             // Fallback to mailto
-            console.warn('Using mailto fallback due to service error');
-            return this.sendViaMailto(formData);
+            // console.warn('Using mailto fallback due to service error');
+            // return this.sendViaMailto(formData);
         }
     }
 
     /**
      * Fallback method using mailto
      */
-    sendViaMailto(formData) {
-        const subject = `New Contact Form Submission - ${formData.service}`;
-        const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone || 'Not provided'}
-Service Type: ${formData.service}
+    // sendViaMailto(formData) {
+    //     const subject = `New Contact Form Submission - ${formData.service}`;
+    //     const body = `
+    //     Name: ${formData.name}
+    //     Email: ${formData.email}
+    //     Phone: ${formData.phone || 'Not provided'}
+    //     Service Type: ${formData.service}
 
-Project Details:
-${formData.details}
+    //     Project Details:
+    //     ${formData.details}
 
----
-This message was sent via InovareSoft website contact form.
-        `.trim();
+    //     ---
+    //     This message was sent via InovareSoft website contact form.
+    //     `.trim();
 
-        const mailtoLink = `mailto:inovaresoft@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    //     const mailtoLink = `mailto:inovaresoft@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-        // Open mailto link
-        window.location.href = mailtoLink;
+    //     // Open mailto link
+    //     window.location.href = mailtoLink;
 
-        return {
-            success: true,
-            message: 'Your email client has been opened with the message. Please send the email to complete your request.'
-        };
-    }
+    //     return {
+    //         success: true,
+    //         message: 'Your email client has been opened with the message. Please send the email to complete your request.'
+    //     };
+    // }
 
     /**
      * Validate form data with enhanced validation
